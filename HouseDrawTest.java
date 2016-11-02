@@ -6,16 +6,15 @@ import java.util.Scanner;
 import TurtleGraphics.StandardPen; 
 class HouseDraw 
 { 
-	private int penRef; 
-	//x and y determine the bottom left coordinates of the house 
-	private int xPosition; 
-	private int yPosition; 
-	private String houseSize; 
-	StandardPen pen; 
+	//x and y determine the bottom left coordinates of the house
+	private int xPosition;
+	private int yPosition;
+	private String houseSize;
+	private StandardPen pen;
  
-	//constructors/////////////////////////////////////////////////////////// 
+	//constructors///////////////////////////////////////////////////////////
  
-	//default no-args constructor(sets houseSize to "small")(if user wants a small house) 
+	//default no-args constructor(sets houseSize to "small")(if user wants a small house)
 	public HouseDraw() 
 	{ 
 		houseSize = "small"; 
@@ -37,16 +36,20 @@ class HouseDraw
 	//constructor that accepts the x and y coordinates(if user wants particular coordinates) 
 	public HouseDraw(int x, int y) 
 	{ 
-		x = -25; 
-		y = -25; 
+		xPosition = x; 
+		yPosition = y; 
 		houseSize = "small"; 
 		pen = new StandardPen(); 
 	} 
 	 
 	//copy constructor 
-	public HouseDraw(HouseDraw house) 
+	public HouseDraw(HouseDraw inc_house) 
 	{ 
-		house = new HouseDraw(); 
+		xPosition = inc_house.xPosition;
+		yPosition = inc_house.yPosition;
+		houseSize = inc_house.houseSize;
+		pen = inc_house.pen;
+			
 		pen = new StandardPen(); 
 	} 
 	 
@@ -55,17 +58,17 @@ class HouseDraw
 	 
 	 
 	//methods///////////////////////////////////////////////////// 
-	public void setxPosition(int x) 
+	public void setxPosition(int x)	//set the x coordinate
 	{ 
 		xPosition = x; 
 	} 
 	 
-	public void setyPosition(int y) 
+	public void setyPosition(int y) //set the y coordinate
 	{ 
 		yPosition = y; 
 	} 
 	 
-	public void sethouseSize(String size) 
+	public void sethouseSize(String size) 	//set the house size
 	{ 
 		houseSize = size; 
 	} 
@@ -132,22 +135,25 @@ public class HouseDrawTest
 	public static void main(String [] args) 
 	{ 
 		Scanner reader = new Scanner(System.in); 
+		
+		HouseDraw house = null;
+		HouseDraw houseCopy = null;
 		 
 		int x = -25; 
 		int y = -25; 
 		String size = "small"; 
 		 
 		 
-		while (size == "small" || size == "medium" || size == "large") 
+		while (size == "small" || size == "medium" || size == "large" || size == "new coordinates" || size == "copy house") 
 		{ 
-			System.out.print("What kind of house do you want to see?\n Small\n Medium\n Large\nNew Coordinates\n\n"); 
+			System.out.print("What kind of house do you want to see?\n Small\n Medium\n Large\nNew Coordinates\nCopy House\n\n"); 
 			size = reader.nextLine(); 
-			 
+			
+			//user wants small sized house
 			if (size.equals("small")) 
 			{
-				x = -25; 
-				y = -25; 
-				HouseDraw house; 
+				x = -25;
+				y = -25;
 				house = new HouseDraw();//call the no args constructor 
 				 
 				house.sethouseSize(size);//send the size variable to setHouseSize 
@@ -155,29 +161,37 @@ public class HouseDrawTest
 				house.setxPosition(x); 
 				house.setyPosition(y); 
 				x = house.getxPosition(); 
-				System.out.print(size + x); 
+				//System.out.print(size + x); 
 				house.draw(); 
 			} 
 			 
+			//user wants either a medium or large sized house
 			if (size.equals("medium") || size.equals("large")) 
 			{ 
-				HouseDraw house; 
 				house = new HouseDraw(size);//send size to the HouseDraw constructor 
 				house.sethouseSize(size);//send size to setHouseSize 
-				//System.out.print(house.getSize()); 
+				house.draw();
+				size = house.getSize(size);
+				System.out.print("Size: " + size); 
 			} 
-			 
-			if (size.equals("large")) 
+			
+			//user enters new coordinates
+			if (size.equals("new coordinates"))
 			{ 
-				HouseDraw house;
-				house = new HouseDraw();//call the no args constructorline
-				house = new HouseDraw(size);//send size to the HouseDraw constructor 
-				house = new HouseDraw(x, y);//send x and y to the HouseDraw constructor 
-				house = new HouseDraw(house);//send x and y to the HouseDraw constructor 
-				house.sethouseSize(size);//send size to setHouseSize 
-				//System.out.print(house.getSize()); 
-			} 
-	 
+				house = new HouseDraw(size);//send size to the HouseDraw constructor
+				x = reader.nextInt();
+				house.setxPosition(x);
+				house.setxPosition(y);
+				house.draw();
+				size = house.getSize(size);
+				System.out.print("Size: " + size);  
+			}
+			
+			if (size.equals("copy house"))
+			{ 
+				 houseCopy = new HouseDraw(house);	//copy constructor
+			}
+			
 		} 
 	} 
 }
