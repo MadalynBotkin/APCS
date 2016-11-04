@@ -27,7 +27,7 @@ class HouseDraw
 	public HouseDraw(String size) 
 	{ 
 		houseSize = size; 
-		//coordinates default to bottom left corner 
+		//coordinates default to bottom left corner
 		xPosition = -25; 
 		yPosition = -25; 
 		pen = new StandardPen(); 
@@ -97,35 +97,50 @@ class HouseDraw
 			sideLength = 100; 
 			drawPerimeter(sideLength); 
 			drawRoof(sideLength); 
-		} 
+		}
+		
+		if (houseSize.equals("medium"))
+		{
+			sideLength = 150; 
+			drawPerimeter(sideLength); 
+			drawRoof(sideLength);
+		}
+		
+		if (houseSize.equals("large"))
+		{
+			sideLength = 250; 
+			drawPerimeter(sideLength); 
+			drawRoof(sideLength);
+		}
 	} 
 		 
 	public void drawPerimeter(int sideLength)//draws the walls and ceiling of house 
 	{ 
-		pen.up(); 
-		pen.move(xPosition, yPosition); 
+		pen.up();
+		pen.move(xPosition, yPosition);
+		pen.setDirection(90);
 		pen.down(); 
-		pen.move(sideLength); 
-		//pen.up(); 
-		//pen.move(xPosition, yPosition); 
-		//pen.turn(225); 
-		//pen.down(); 
-		//pen.move(sideLength); 
-		//pen.turn(90); 
-		//pen.move(sideLength); 
-		//pen.turn(90); 
-		//pen.move(sideLength); 
+		pen.move(sideLength);
+		pen.turn(-90);
+		pen.move(sideLength);
+		pen.turn(-90);
+		pen.move(sideLength);
 	} 
 	 
 	public void drawRoof(int sideLength)//draws the roof of the house 
 	{ 
-		//pen.up(); 
-		//pen.move(xPosition, yPosition); 
-		//pen.turn(225); 
-		//pen.move(sideLength); 
-		//pen.down(); 
-		//pen.turn(90); 
-		//pen.move(sideLength); 
+		//double roofLength = Math.sqrt( (Math.pow(sideLength, 2) + (Math.pow(sideLength, 2)) ) ) ;
+		double roofLength = Math.pow(Math.pow(sideLength, 2), -4);
+		
+		pen.up();
+		pen.move(xPosition, yPosition);
+		pen.setDirection(90);
+		pen.move(roofLength);
+		pen.down();
+		pen.turn(-45);
+		pen.move(roofLength);
+		pen.turn(-90);
+		pen.move(roofLength);
 	} 
 } 
 	 
@@ -194,4 +209,4 @@ public class HouseDrawTest
 			
 		} 
 	} 
-}
+} 
