@@ -153,14 +153,15 @@ public class HouseDrawTest
 		HouseDraw house = null;
 		HouseDraw houseCopy = null;
 		 
-		int x = -25; 
-		int y = -25; 
+		int x = -25;	//the x-coordinate
+		int y = -25;	//the x-coordinate
 		String size = "small";
+		String next = "";	//actually does nothing; just lets user view the size and coordinates before starting the loop again
 		
 		
-		while (size == "small" || size == "medium" || size == "large" || size == "new coordinates" || size == "copy house") 
+		while (size.equals("small") || size.equals("medium") || size.equals("large") || size.equals("new coordinates") || size.equals("copy house")) 
 		{ 
-			System.out.print("What kind of house do you want to see?\n Small\n Medium\n Large\nNew Coordinates\nCopy House\n\n"); 
+			System.out.print("What kind of house do you want to see?\n Small\n Medium\n Large\nNew Coordinates\nCopy House\nEnd\n\n"); 
 			size = reader.nextLine(); 
 			
 			//user wants small sized house
@@ -176,6 +177,8 @@ public class HouseDrawTest
 					
 				System.out.print("\nSize: " + house.getSize(size) + "\nX-Coordinate: " + house.getxPosition() + "\nY-Coordinate: " + house.getyPosition());
 				house.draw();
+				System.out.print("\n\nPress Enter to continue");
+				next = reader.nextLine();
 			} 
 			 
 			//user wants either a medium or large sized house
@@ -189,6 +192,8 @@ public class HouseDrawTest
 					
 				System.out.print("\nSize: " + house.getSize(size) + "\nX-Coordinate: " + house.getxPosition() + "\nY-Coordinate: " + house.getyPosition()); 
 				house.draw();
+				System.out.print("\n\nPress Enter to continue");
+				next = reader.nextLine();
 			}
 			
 			//user enters new coordinates
@@ -205,6 +210,8 @@ public class HouseDrawTest
 				
 				System.out.print("\nSize: " + house.getSize(size) + "\nX-Coordinate: " + house.getxPosition() + "\nY-Coordinate: " + house.getyPosition());
 				house.draw();
+				System.out.print("\n\nPress Enter to continue");
+				next = reader.nextLine();
 			}
 			
 			//user wants a copy of the house
@@ -213,6 +220,13 @@ public class HouseDrawTest
 				 houseCopy = new HouseDraw(house);	//copy constructor
 				 System.out.print("\nSize: " + house.getSize(size) + "\nX-Coordinate: " + house.getxPosition() + "\nY-Coordinate: " + house.getyPosition());
 				 house.draw();
+				 System.out.print("\n\nPress Enter to continue");
+				 next = reader.nextLine();
+			}
+			
+			if (size.equals("end"))
+			{
+				System.out.print("\nGoodbye");
 			}
 			
 		}
