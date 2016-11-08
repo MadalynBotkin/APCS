@@ -2,6 +2,8 @@
 //TimeTest.java
 //
 
+import java.util.Scanner;
+
 class TimeConvert
 {
 	private int hour;
@@ -13,9 +15,9 @@ class TimeConvert
 	//default constructor
 	public TimeConvert()
 	{
-		hour = 0;
-		minute = 0;
-		meridiem = "";
+		//hour = 0;
+		//minute = 0;
+		//meridiem = "";
 	}
 	
 	//accept hour and meridiem from main
@@ -27,7 +29,7 @@ class TimeConvert
 	}
 	
 	//accept hour, meridiem, and minutes from main
-	public TimeConvert(int inc_hour, String inc_meridiem, int inc_minutes)
+	public TimeConvert(int inc_hour, String inc_meridiem, int inc_minute)
 	{
 		hour = inc_hour;
 		meridiem = inc_meridiem;
@@ -40,6 +42,12 @@ class TimeConvert
 		hour = inc_time.hour;
 		minute = inc_time.minute;
 		meridiem = inc_time.meridiem;
+	}
+	
+	//chaining constructor
+	public TimeConvert(int hour, int minute, String meridiem)
+	{
+		
 	}
 	
 	
@@ -152,16 +160,21 @@ class TimeConvert
 	
 	//returns string of the time. If the time is still in standard format, convert to universal
 	String toUniversalString()
-	{
+	{	
 		//if am
 		if (meridiem.equals("am"))
 		{
 			if (hour == 12)	//12:00 am = 0:00 u
 			{
-				hour  = 0;
+				//return the time
+				return "0:" + minute + " u";
 			}
 			
-			meridiem = "u";
+			else
+			{
+				//return the time
+				return hour + ":" + minute + " u";
+			}
 		}
 		
 		//if pm
@@ -169,14 +182,55 @@ class TimeConvert
 		{
 			if (hour != 12)	//12:00 pm = 12:00 u
 			{
-				hour = hour + 12;
+				return (hour + 12) + ":" + minute + " u";
+				//hour = hour + 12;
 			}
-			
-			meridiem = "u";
 		}
 		
 		//return the time
-		return hour + ":" + minute + " " + meridiem;
+		else
+		{
+			return hour + ":" + minute + " " + meridiem;
+		}
+	}
+	
+	//returns string of the time. If the time is still in universal, convert to standard format
+	String toStandardString()
+	{	
+		if (meridiem.equals("u"))
+		{
+			//if it's am
+			if (hour > 12)
+			{
+				//if it's midnight
+				if (hour == 0)
+				{
+					return 12 + ":" + minute + " am";
+				}
+				
+				else
+				{
+					return hour + ":" + minute + " am";
+				}
+			}
+			
+			//if it's pm
+			if (hour < 12)
+			{
+				return (hour - 12) + ":" + minute + " pm";
+			}
+			
+			else
+			{
+				return hour + ":" + minute + " pm";
+			}
+		}
+		
+		//return the time
+		else
+		{
+			return hour + ":" + minute + " " + meridiem;
+		}
 	}
 }
 
@@ -195,6 +249,8 @@ class TimeTest
 {
 	public static void main(String [] args)
 	{
+		Scanner reader = new Scanner(System.in);
+		
 		int hour = 0;
 		int minute = 0;
 		String meridiem = "";
@@ -203,7 +259,7 @@ class TimeTest
 		TimeConvert timeCopy = new TimeConvert(time);	//copied from the original time
 		
 		
-		//incoming
+		System.out.print();
 		//time.setTime(hour, minute, meridiem);	set the variables
 	}
 }
