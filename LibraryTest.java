@@ -42,9 +42,10 @@ class Book
 	//returns list of the Book's variables
 	public String toString()
 	{
-		return author + title;
+		return title + " by " + author;
 	}
 }
+
 
 
 
@@ -86,7 +87,6 @@ class Patron
 		return name;
 	}
 	
-	//
 	//public boolean borrowBook()
 	//{
 	//	return ;
@@ -94,6 +94,17 @@ class Patron
 	
 	//check if the book reference is not null, and equals the incoming title, and if title is found, set the reference to null and return true
 	//public boolean returnBook()
+	//{
+		
+	//}
+	
+	//public boolean hasBook()
+	//{
+		
+	//}
+	
+	//returns list of patron's books and whether they have it, or borrowed it, or have returned it
+	//public String toString()
 	//{
 		
 	//}
@@ -124,10 +135,15 @@ public class LibraryTest
 		Patron patron2;
 		Patron patron3;
 		
-		System.out.print("Patron 1: ");
-		option = reader.nextLine();
+		book1 = new Book();	//create book1
+		
+		System.out.print("Book 1:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook1: " + book1.toString());
 		
 		
+		book2 = new Book(author, title);	//create book2
+		
+		System.out.print("\n\nBook 2:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook1: " + book1.toString());
+
 		
 		
 		
