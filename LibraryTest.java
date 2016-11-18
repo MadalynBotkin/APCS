@@ -110,26 +110,44 @@ class Patron
 		}
 		else
 		{
-			return ;
+			return false;
 		}	
 	}
 	
 	//check if the book reference is not null, and equals the incoming title, and if title is found, set the reference to null and return true
-	//public boolean returnBook()
-	//{
+	public boolean returnBook(String inc_title)
+	{
+		if (myBook1 != null)
+		{
+			
+		}
 		
-	//}
+		if (myBook2 != null)
+		{
+			
+		}
+		
+		if (myBook3 != null)
+		{
+			
+		}
+		
+		else
+		{
+			return false;
+		}
+	}
 	
-	//public boolean hasBook()
-	//{
+	public boolean hasBook()
+	{
 		
-	//}
+	}
 	
 	//returns list of patron's books and whether they have it, or borrowed it, or have returned it
-	//public String toString()
-	//{
-		
-	//}
+	public String toString()
+	{
+		return "Patron:\n\nName: " + name + "\nBooks Checked Out: " + myBook1 + ", " + myBook2 + ", " + myBook3;
+	}
 }
 
 
@@ -158,7 +176,7 @@ public class LibraryTest
 		Patron patron3;
 		
 		
-		patron.borrow(book2);/////////////////////////////////////////////////////
+		//patron.borrow(book2);///////////////////////////////////////////////////////////////////////////
 		//the books
 		
 		book1 = new Book();	//create book1
@@ -172,11 +190,8 @@ public class LibraryTest
 		System.out.print("\n\nBook 2:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook2: " + book1.toString());
 		
 		
-		author = "S.P. Ace";
-		title = "Lunar Expedition";
-
 		
-		book3 = new Book(author, title);	//create book2
+		book3 = new Book("S.P. Ace", "Lunar Expedition");	//create book3
 		
 		System.out.print("\n\nBook 3:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook3: " + book1.toString());
 		
@@ -185,6 +200,16 @@ public class LibraryTest
 		
 		
 		//the patrons
+		
+		
+		
+		
+		
+		//patron1 = new Patron();	//create patron1
+		
+		//patron.borrowBook(book2);	//patron1 wants to check out a cooking book
+		
+		//System.out.print("\n\nPatron 1:\n\nName: " + patron.getName() + "\n" + patron.toString());
 		
 		
 		
