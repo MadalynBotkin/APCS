@@ -13,6 +13,7 @@ class Book
 	//default constructor
 	public Book()
 	{
+		//generic book
 		author = "Somebody";
 		title = "Any Old Book";
 	}
@@ -87,10 +88,31 @@ class Patron
 		return name;
 	}
 	
-	//public boolean borrowBook()
-	//{
-	//	return ;
-	//}
+	public boolean borrowBook(Book inc_borrowedBook)
+	{
+		//check if the patron has room for more books and if they do, give them one
+		if (myBook1 == null)
+		{
+			myBook1 = inc_borrowedBook;
+			return true;
+		}
+		
+		if (myBook2 == null)
+		{
+			myBook2 = inc_borrowedBook;
+			return true;
+		}
+		
+		if (myBook3 == null)
+		{
+			myBook3 = inc_borrowedBook;
+			return true;
+		}
+		else
+		{
+			return ;
+		}	
+	}
 	
 	//check if the book reference is not null, and equals the incoming title, and if title is found, set the reference to null and return true
 	//public boolean returnBook()
@@ -135,18 +157,34 @@ public class LibraryTest
 		Patron patron2;
 		Patron patron3;
 		
+		
+		patron.borrow(book2);/////////////////////////////////////////////////////
+		//the books
+		
 		book1 = new Book();	//create book1
 		
 		System.out.print("Book 1:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook1: " + book1.toString());
 		
 		
-		book2 = new Book(author, title);	//create book2
 		
-		System.out.print("\n\nBook 2:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook1: " + book1.toString());
+		book2 = new Book("", "Best Pie Recipes");	//create book2
+		
+		System.out.print("\n\nBook 2:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook2: " + book1.toString());
+		
+		
+		author = "S.P. Ace";
+		title = "Lunar Expedition";
 
 		
+		book3 = new Book(author, title);	//create book2
+		
+		System.out.print("\n\nBook 3:\n\nTitle: " + book1.getTitle() + "\nAuthor: " + book1.getAuthor() + "\nBook3: " + book1.toString());
 		
 		
+		
+		
+		
+		//the patrons
 		
 		
 		
