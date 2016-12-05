@@ -8,6 +8,7 @@ public class StringArray
 {
 	String string;
 	
+	//constructor to hold the user's input
 	public StringArray(String string)
 	{
 		this.string = string;
