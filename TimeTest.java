@@ -1,6 +1,6 @@
 //Madalyn Botkin
 //TimeTest.java
-//
+//The TimeTest class tests all the constructors and methods of the TimeConvert class.
 
 import java.util.Scanner;
 
@@ -15,41 +15,36 @@ class TimeConvert
 	//default constructor
 	public TimeConvert()
 	{
-		//hour = 0;
-		//minute = 0;
-		//meridiem = "";
+		hour = 0;
+		minute = 0;
+		meridiem = "";
 	}
 	
 	//accept hour and meridiem from main
-	public TimeConvert(int inc_hour, String inc_meridiem)
+	public TimeConvert(int hour, String meridiem)
 	{
-		hour = inc_hour;
-		meridiem = inc_meridiem;
+		this.hour = hour;
+		this.meridiem = meridiem;
 		minute = 0;
 	}
 	
 	//accept hour, meridiem, and minutes from main
-	public TimeConvert(int inc_hour, String inc_meridiem, int inc_minute)
+	public TimeConvert(int hour, String meridiem, int minute)
 	{
-		hour = inc_hour;
-		meridiem = inc_meridiem;
-		minute = inc_minutes;
+		this.hour = hour;
+		this.meridiem = meridiem;
+		this.minute = minute;
 	}
 	
 	//copy constructor
-	public TimeConvert(TimeConvert inc_time)
+	public TimeConvert(TimeConvert time)
 	{
-		hour = inc_time.hour;
-		minute = inc_time.minute;
-		meridiem = inc_time.meridiem;
+		hour = time.hour;
+		minute = time.minute;
+		meridiem = time.meridiem;
 	}
-	
-	//chaining constructor
-	public TimeConvert(int hour, int minute, String meridiem)
-	{
-		
-	}
-	
+
+
 	
 	
 	
@@ -58,47 +53,48 @@ class TimeConvert
 	
 	//setters
 	
-	//set the variables
-	public void setTime(int inc_hour, int inc_minute, String inc_meridiem)
+	//validates and set the variables
+	public void setTime(int hour, int minute, String meridiem)
 	{
-		hour = inc_hour;
-		minute  = inc_minute;
-		meridiem = inc_meridiem;
+		this.hour = hour;
+		this.minute  = minute;
+		this.meridiem = meridiem;
 		
-		if (minute < 0 || minute < 60)	//if the minute is less than 0 or greater than 60, set to 0
+		if (this.minute < 0 || this.minute >= 60)	//if the minute is less than 0 or greater than 60, set to 0
 		{
-			minute = 0;
+			this.minute = 0;
 		}
 		
-		//if the meridiem is not valid, set it to 0
-		if (!meridiem.equals("u") || !meridiem.equals("am") || !meridiem.equals("pm"))
+		//if the meridiem is not valid, set it to e for error
+		if (!this.meridiem.equals("u") && !this.meridiem.equals("am") && !this.meridiem.equals("pm"))
 		{
-			meridiem = null;
+			this.meridiem = "e";
+			this.hour  = 0;
 		}
 		
 		//if universal time and if the hour exceeds the 23 hour time period, set it to 0
-		if (meridiem.equals("u") && (hour < 0 || hour > 23))
+		if (this.meridiem.equals("u") && (this.hour < 0 || this.hour > 23))
 		{
-			hour  = 0;
+			this.hour  = 0;
 		}
 		
-		//if am and hour is invlaid
-		if (meridiem.equals("am") && (hour < 0 || hour > 23))
+		//if am and hour is invalid
+		if (this.meridiem.equals("am") && (this.hour < 0 || this.hour > 12))
 		{
-			hour  = 0;
+			this.hour  = 0;
 		}
 		
 		//if pm and hour is invalid
-		if (meridiem.equals("pm") && (hour < 0 || hour > 23))
+		if (this.meridiem.equals("pm") && (this.hour < 0 || this.hour > 12))
 		{
-			hour  = 0;
+			this.hour  = 0;
 		}
 	}
 	
-	//sets the hour
-	void setHour(int inc_hour)
+	//validates and sets the hour
+	void setHour(int hour)
 	{
-		hour = inc_hour;
+		this.hour = hour;
 		
 		//if invalid
 		if (hour < 0 || hour > 23)
@@ -107,10 +103,10 @@ class TimeConvert
 		}
 	}
 	
-	//sets the minute
-	void setMinute(int inc_minute)
+	//validates and sets the minute
+	void setMinute(int minute)
 	{
-		minute = inc_minute;
+		this.minute = minute;
 		
 		//if invalid
 		if (minute < 0 || minute < 60)
@@ -119,10 +115,10 @@ class TimeConvert
 		}
 	}
 	
-	//sets the meridiem
-	void setMeridiem(String inc_meridiem)
+	//validates and sets the meridiem
+	void setMeridiem(String meridiem)
 	{
-		meridiem = inc_meridiem;
+		this.meridiem = meridiem;
 		
 		//if invalid
 		if (!meridiem.equals("u") || !meridiem.equals("am") || !meridiem.equals("pm"))
@@ -148,7 +144,7 @@ class TimeConvert
 	}
 	
 	//return the meridiem
-	String getMerdiem()
+	String getMeridiem()
 	{
 		return meridiem;
 	}
@@ -178,13 +174,9 @@ class TimeConvert
 		}
 		
 		//if pm
-		if (meridiem.equals("pm"))
+		if (meridiem.equals("pm") && hour != 12)	//12:00 pm = 12:00 u
 		{
-			if (hour != 12)	//12:00 pm = 12:00 u
-			{
-				return (hour + 12) + ":" + minute + " u";
-				//hour = hour + 12;
-			}
+			return (hour + 12) + ":" + minute + " u";
 		}
 		
 		//return the time
@@ -200,7 +192,7 @@ class TimeConvert
 		if (meridiem.equals("u"))
 		{
 			//if it's am
-			if (hour > 12)
+			if (hour < 12)
 			{
 				//if it's midnight
 				if (hour == 0)
@@ -215,11 +207,13 @@ class TimeConvert
 			}
 			
 			//if it's pm
-			if (hour < 12)
+			
+			if (hour > 12)
 			{
 				return (hour - 12) + ":" + minute + " pm";
 			}
 			
+			//if it's noon
 			else
 			{
 				return hour + ":" + minute + " pm";
@@ -255,11 +249,64 @@ class TimeTest
 		int minute = 0;
 		String meridiem = "";
 		
-		TimeConvert time = new TimeConvert();
-		TimeConvert timeCopy = new TimeConvert(time);	//copied from the original time
+		//four different times
+		TimeConvert time1;	//default
+		TimeConvert time2;
+		TimeConvert time3;	
+		TimeConvert time4;	//incorrect
+		TimeConvert time5;	//copy of time3
 		
 		
-		System.out.print();
-		//time.setTime(hour, minute, meridiem);	set the variables
+		//time1
+		time1 = new TimeConvert();	//default time
+		
+		System.out.print("Time1 (default): " + time1.getMinute() + ":" + time1.getHour() + " " + time1.getMeridiem());
+		
+		
+		//time2
+		hour = 2;
+		meridiem = "pm";
+		
+		time2 = new TimeConvert(hour, meridiem);
+		
+		time2.setMeridiem(time2.getMeridiem());
+		time2.setMinute(time2.getMinute());
+		time2.setHour(time2.getHour());
+		
+		System.out.print("\n\nTime2:\nStandard: " + time2.toStandardString());
+		System.out.print("\nUniversal: " + time2.toUniversalString());
+		
+		
+		//time3
+		hour = 22;
+		minute = 35;
+		meridiem = "u";
+		
+		time3 = new TimeConvert(hour, meridiem, minute);
+		
+		time3.setTime(time3.getHour(), time3.getMinute(), time3.getMeridiem());
+		
+		System.out.print("\n\nTime3:\nStandard: " + time3.toStandardString());
+		System.out.print("\nUniversal: " + time3.toUniversalString());
+		
+		
+		//time4
+		hour = 42;
+		minute = -23;
+		meridiem = "hi";
+		
+		time4 = new TimeConvert(hour, meridiem, minute);
+		
+		time4.setTime(time4.getHour(), time4.getMinute(), time4.getMeridiem());
+		
+		System.out.print("\n\nTime4:\nStandard: " + time4.toStandardString());
+		System.out.print("\nUniversal: " + time4.toUniversalString());
+		
+		
+		//time5
+		time5 = new TimeConvert(time3);
+	
+		System.out.print("\n\nTime5:\nStandard: " + time5.toStandardString());
+		System.out.print("\nUniversal: " + time5.toUniversalString());
 	}
 }
