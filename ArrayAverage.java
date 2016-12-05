@@ -18,7 +18,7 @@ public class ArrayAverage
 		System.out.print("Enter 10 real numbers:\n");
 		
 		//read in the numbers
-		for (index = 0; index < 10; index++)
+		for (; index < array.length; index++)
 		{
 			array[index] = reader.nextDouble();
 		}
