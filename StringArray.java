@@ -25,11 +25,19 @@ public class StringArray
 		System.out.print("How many strings do you want to enter?: ");
 		numStrings = reader.nextInt();
 		
-		stringArray = new String[numStrings];
+		System.out.print("Enter strings:\n");
+		stringArray = new String[numStrings + 1];	//makes the array as big as the user wants it to be
 		
+		//go through the array and fill it with the strings the user enters
 		for (String str : stringArray)
 		{
-			
+			str = reader.nextLine();
 		}
+		
+		
+		
+		//find the longest string
+		for (; ; )
+		//traverse
 	}
 }
