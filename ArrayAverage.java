@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ArrayAverage
 {
 	//main method
-	public static void main (String[] args)
+	public static void main (String [] args)
 	{
 		Scanner reader = new Scanner(System.in);
 		
@@ -18,12 +18,21 @@ public class ArrayAverage
 		System.out.print("Enter 10 real numbers:\n");
 		
 		//read in the numbers
-		for (; index < array.length; index++)
+		for (index = 0; index < 10; index++)
 		{
 			array[index] = reader.nextDouble();
 		}
 		
-		System.out.print("Average: " + getAverage(array, index));
+		System.out.print("Average: " + getAverage(array, index) + "\n\nNumbers greater than the average:\n");
+		
+		//find and output all numbers greater than the average
+		for (double greaterNum : array)
+		{
+			if (array[] > getAverage())
+			{
+				System.out.print(array[]);
+			}
+		}
 	}
 	
 	
