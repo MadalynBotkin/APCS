@@ -18,7 +18,7 @@ public class StringArray
 	{
 		Scanner reader = new Scanner(System.in);
 		
-		String stringArray[];	//the string array
+		String[] stringArray;	//the string array
 		int numStrings;
 		int index = 0;
 		int longStringIndex = 0;
@@ -34,7 +34,7 @@ public class StringArray
 		System.out.print("How many strings do you want to enter?: ");
 		numStrings = reader.nextInt();
 		
-		System.out.print("Enter strings:\n");
+		System.out.print("\nEnter strings:\n");
 		stringArray = new String[numStrings + 1];	//makes the array as big as the user wants it to be
 		
 		//go through the array and fill it with the strings the user enters
@@ -46,51 +46,51 @@ public class StringArray
 		
 		
 		//find the longest string
-		for (index = 0; index < stringArray[].length; index++)
+		for (index = 0; index < stringArray.length; index++)
 		{
 			longerString = stringArray[index];
 			compareString = stringArray[index + 1];
 			
-			if (compareString > longerString)	//if the compareString is found to be longer, it becomes longerString
+			if (compareString.length() > longerString.length())	//if the compareString is found to be longer, it becomes longerString
 			{
 				longerString = compareString;
 				longStringIndex = index;	//keep track of the index of the longest string
 			}
 		}
 		//output the longest string's info
-		System.out.print("\n\nLongest string: " + longerString + "\nLength: " + stringArray[longStringIndex].length + "\nIndex Position: " + longStringIndex);
+		System.out.print("\n\nLongest string: " + longerString + "\nLength: " + stringArray[longStringIndex].length() + "\nIndex Position: " + longStringIndex);
 
 		
 		
 		//find the shortest string
-		for (index = 0; index < stringArray[].length; index++)
+		for (index = 0; index < stringArray.length; index++)
 		{
 			shorterString = stringArray[index];
 			compareString = stringArray[index + 1];
 			
-			if (compareString < shorterString)	//if the compareString is found to be shorter, it becomes shorterString
+			if (compareString.length() < shorterString.length())	//if the compareString is found to be shorter, it becomes shorterString
 			{
 				longerString = compareString;
 				shortStringIndex = index;	//keep track of the index of the shortest string
 			}
 		}
 		//output the shortest string's info
-		System.out.print("\n\nShortest string: " + shorterString + "\nLength: " + stringArray[shortStringIndex].length + "\nIndex Position: " + shortStringIndex);
+		System.out.print("\n\nShortest string: " + shorterString + "\nLength: " + stringArray[shortStringIndex].length() + "\nIndex Position: " + shortStringIndex);
 
 		
 		//find the string that comes first alphabetically
-		for (; index < stringArray[].length; index++)
+		for (; index < stringArray.length; index++)
 		{
-			String firstString = stringArray[index];
-			String compareString = stringArray[index + 1];
+			firstString = stringArray[index];
+			compareString = stringArray[index + 1];
 			
-			if (compareString.compareTo(longerString) > 0)	//if the compareString is l
+			if (compareString.compareToIgnoreCase(longerString) > 0)	//if the compareString is l
 			{
 				longerString = compareString;
 				firstStringIndex = index;	//keep track of the index of the first string
 			}
 		}
 		//output the first string's info
-		System.out.print("\n\nAlphabetically first string: " + firstString + "\nLength: " + stringArray[firstStringIndex].length + "\nIndex Position: " + firstStringIndex);
+		System.out.print("\n\nAlphabetically first string: " + firstString + "\nLength: " + stringArray[firstStringIndex].length() + "\nIndex Position: " + firstStringIndex);
 	}
 }
