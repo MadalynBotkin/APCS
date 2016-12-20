@@ -1,6 +1,6 @@
 //Madalyn Botkin
 //ArrayAverage.java
-//User inputs 10 numbers that are saved in an array. In another method, the average of the numbers in the array is calculated
+//User inputs 10 numbers that are saved in an array. In another method, the average of the numbers in the array is calculated, then all numbers in array that are greater than the average are displayed.
 
 import java.util.Scanner;
 
@@ -11,26 +11,26 @@ public class ArrayAverage
 	{
 		Scanner reader = new Scanner(System.in);
 		
-		double array[] = new double[100];	//the array
+		double[] array = new double[10];	//the array
 		int index = 0;	//where in the array it is
-	
+		
 		
 		System.out.print("Enter 10 real numbers:\n");
 		
 		//read in the numbers
-		for (index = 0; index < 10; index++)
+		for (; index < array.length; index++)
 		{
 			array[index] = reader.nextDouble();
 		}
 		
-		System.out.print("Average: " + getAverage(array, index) + "\n\nNumbers greater than the average:\n");
+		System.out.print("\n\nAverage: " + getAverage(array) + "\n\nNumbers greater than the average:\n");
 		
 		//find and output all numbers greater than the average
 		for (double greaterNum : array)
 		{
-			if (array[] > getAverage())
+			if (greaterNum > getAverage(array))
 			{
-				System.out.print(array[]);
+				System.out.print(greaterNum);
 			}
 		}
 	}
@@ -39,16 +39,16 @@ public class ArrayAverage
 	
 	
 	//get average method
-	public static int getAverage(double array[], int index)
+	public static double getAverage(double[] array)
 	{
 		double average = 0;
 		
-		for (double number : array)
+		for (double number : array)	//go through the array and add up all its numbers
 		{
-			average += number;
+			average = average + number;
 		}
-		
-		average /= index;
+	
+		average /= array.length;
 		
 		return average;
 	}
