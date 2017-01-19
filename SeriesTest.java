@@ -12,9 +12,25 @@ class ByTwos implements Series
 		currentValue = 0;
 	}
 	
-	int getPrevious()
+	public int getPrevious()	//the last iteration (-2)
 	{
-		
+		currentValue -= 2;
+		return currentValue;
+	}
+	
+	//Series interface implementation
+	public int getNext()	//the next iteration (+2)
+	{
+		currentValue += 2;
+		return currentValue;
+	}
+	public void reset()
+	{
+		currentValue = 0;
+	}
+	public void setStart(int startValue)
+	{
+		currentValue = startValue;
 	}
 }
 
@@ -28,9 +44,25 @@ class ByFives implements Series
 		currentValue = 0;
 	}
 	
-	int getPrevious()
+	public int getPrevious()	//the last iteration (-5)
 	{
-		
+		currentValue -= 2;
+		return currentValue;
+	}
+	
+	//Series interface implementation
+	public int getNext()	//the next iteration (+5)
+	{
+		currentValue += 5;
+		return currentValue;
+	}
+	public void reset()
+	{
+		currentValue = 0;
+	}
+	public void setStart(int startValue)
+	{
+		currentValue = startValue;
 	}
 }
 
@@ -43,6 +75,27 @@ class ByInterval implements Series
 	
 	int currentValue;
 	int interval;
+	
+	//Series interface implementation
+	public int getNext()	//the next iteration (+interval)
+	{
+		currentValue += interval;
+		return currentValue;
+	}
+	public void reset()
+	{
+		currentValue = 0;
+	}
+	public void setStart(int startValue)
+	{
+		currentValue = startValue;
+	}
+	
+	public int getPrevious()	//the last iteration (-interval)
+	{
+		currentValue -= 2;
+		return currentValue;
+	}
 }
 
 
@@ -53,8 +106,49 @@ public class SeriesTest
 {
 	public static void main (String [] args)
 	{
+		Series seriesTest1;
+		int startValue = 2;
 		
+		
+		//testing ByTwos implementation
+		
+		seriesTest1 = new ByTwos();
+		seriesTest1.reset();
+		seriesTest1.setStart(startValue);
+		
+		System.out.print("ByTwos:\n\nStarting value: " + startValue + "\nSeries: ");
+		
+		System.out.print(seriesTest1.getNext());	//use getNext
+		
+		for (int i = 0; i < 4; i++)
+		{
+			System.out.print(", " + seriesTest1.getNext());
+		}
+		
+		System.out.print("\nSeries backwards: " + seriesTest1.getPrevious());	//use getPrevious
+		
+		for (int i = 0; i < 4; i++)
+		{
+			System.out.print(", " + seriesTest1.getPrevious());
+		}
+		
+		
+		
+		//testing ByFives implementation
+		
+		seriesTest1 = new ByFives();
+		seriesTest1.reset();
+		seriesTest1.setStart(2);
+		seriesTest1.getNext();
+		
+		
+		//testing ByInterval implementation
+		
+		int interval = 7;
+		
+		seriesTest1 = new ByInterval(interval);
+		seriesTest1.reset();
+		seriesTest1.setStart(2);
+		seriesTest1.getNext();
 	}
 }
-
-//394
