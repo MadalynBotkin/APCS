@@ -24,11 +24,11 @@ class ByTwos implements Series
 		currentValue += 2;
 		return currentValue;
 	}
-	public void reset()
+	public void reset()	//sets currentValue to 0
 	{
 		currentValue = 0;
 	}
-	public void setStart(int startValue)
+	public void setStart(int startValue)	//Set currentValue to the startValue taken in from main
 	{
 		currentValue = startValue;
 	}
@@ -46,7 +46,7 @@ class ByFives implements Series
 	
 	public int getPrevious()	//the last iteration (-5)
 	{
-		currentValue -= 2;
+		currentValue -= 5;
 		return currentValue;
 	}
 	
@@ -56,11 +56,11 @@ class ByFives implements Series
 		currentValue += 5;
 		return currentValue;
 	}
-	public void reset()
+	public void reset()	//sets currentValue to 0
 	{
 		currentValue = 0;
 	}
-	public void setStart(int startValue)
+	public void setStart(int startValue)	//Set currentValue to the startValue taken in from main
 	{
 		currentValue = startValue;
 	}
@@ -68,6 +68,7 @@ class ByFives implements Series
 
 class ByInterval implements Series
 {
+	//constructor that takes in interval as a parameter
 	ByInterval(int interval)
 	{
 		this.interval = interval;
@@ -82,18 +83,18 @@ class ByInterval implements Series
 		currentValue += interval;
 		return currentValue;
 	}
-	public void reset()
+	public void reset()	//sets currentValue to 0
 	{
 		currentValue = 0;
 	}
-	public void setStart(int startValue)
+	public void setStart(int startValue)	//Set currentValue to the startValue taken in from main
 	{
 		currentValue = startValue;
 	}
 	
 	public int getPrevious()	//the last iteration (-interval)
 	{
-		currentValue -= 2;
+		currentValue -= interval;
 		return currentValue;
 	}
 }
@@ -112,7 +113,7 @@ public class SeriesTest
 		
 		//testing ByTwos implementation
 		
-		seriesTest1 = new ByTwos();
+		seriesTest1 = new ByTwos();	//use the ByTwos class
 		seriesTest1.reset();
 		seriesTest1.setStart(startValue);
 		
@@ -136,11 +137,13 @@ public class SeriesTest
 		
 		//testing ByFives implementation
 		
-		seriesTest1 = new ByFives();
+		startValue = 5;
+		
+		seriesTest1 = new ByFives();	//use the ByFives class
 		seriesTest1.reset();
 		seriesTest1.setStart(startValue);
 		
-		System.out.print("ByFives:\n\nStarting value: " + startValue + "\nSeries: ");
+		System.out.print("\n\n\nByFives:\n\nStarting value: " + startValue + "\nSeries: ");
 		
 		System.out.print(seriesTest1.getNext());	//use getNext
 		
@@ -160,17 +163,13 @@ public class SeriesTest
 		//testing ByInterval implementation
 		
 		int interval = 7;
+		startValue = 7;
 		
-		seriesTest1 = new ByInterval(interval);
-		seriesTest1.reset();
-		seriesTest1.setStart(2);
-		seriesTest1.getNext();
-		
-seriesTest1 = new ByFives();
+		seriesTest1 = new ByInterval(interval);	//use the ByInterval class
 		seriesTest1.reset();
 		seriesTest1.setStart(startValue);
 		
-		System.out.print("ByFives:\n\nStarting value: " + startValue + "\nSeries: ");
+		System.out.print("\n\n\nByInterval:\n\nStarting value: " + startValue + "\nSeries: ");
 		
 		System.out.print(seriesTest1.getNext());	//use getNext
 		
@@ -179,11 +178,11 @@ seriesTest1 = new ByFives();
 			System.out.print(", " + seriesTest1.getNext());
 		}
 		
-		System.out.print("\nSeries backwards: " + ((ByFives)seriesTest1).getPrevious());	//use getPrevious
+		System.out.print("\nSeries backwards: " + ((ByInterval)seriesTest1).getPrevious());	//use getPrevious
 		
 		for (int i = 0; i < 4; i++)
 		{
-			System.out.print(", " + ((ByFives)seriesTest1).getPrevious());
+			System.out.print(", " + ((ByInterval)seriesTest1).getPrevious());
 		}
 	}
 }
