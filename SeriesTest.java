@@ -134,13 +134,13 @@ public class SeriesTest
 		
 		
 		
-		//testing ByFives implementation	/////////////////////////////////////////change to ByFives
+		//testing ByFives implementation
 		
-		seriesTest1 = new ByTwos();
+		seriesTest1 = new ByFives();
 		seriesTest1.reset();
 		seriesTest1.setStart(startValue);
 		
-		System.out.print("ByTwos:\n\nStarting value: " + startValue + "\nSeries: ");
+		System.out.print("ByFives:\n\nStarting value: " + startValue + "\nSeries: ");
 		
 		System.out.print(seriesTest1.getNext());	//use getNext
 		
@@ -149,11 +149,11 @@ public class SeriesTest
 			System.out.print(", " + seriesTest1.getNext());
 		}
 		
-		System.out.print("\nSeries backwards: " + ((ByTwos)seriesTest1).getPrevious());	//use getPrevious
+		System.out.print("\nSeries backwards: " + ((ByFives)seriesTest1).getPrevious());	//use getPrevious
 		
 		for (int i = 0; i < 4; i++)
 		{
-			System.out.print(", " + ((ByTwos)seriesTest1).getPrevious());
+			System.out.print(", " + ((ByFives)seriesTest1).getPrevious());
 		}
 		
 		
@@ -165,5 +165,25 @@ public class SeriesTest
 		seriesTest1.reset();
 		seriesTest1.setStart(2);
 		seriesTest1.getNext();
+		
+seriesTest1 = new ByFives();
+		seriesTest1.reset();
+		seriesTest1.setStart(startValue);
+		
+		System.out.print("ByFives:\n\nStarting value: " + startValue + "\nSeries: ");
+		
+		System.out.print(seriesTest1.getNext());	//use getNext
+		
+		for (int i = 0; i < 4; i++)
+		{
+			System.out.print(", " + seriesTest1.getNext());
+		}
+		
+		System.out.print("\nSeries backwards: " + ((ByFives)seriesTest1).getPrevious());	//use getPrevious
+		
+		for (int i = 0; i < 4; i++)
+		{
+			System.out.print(", " + ((ByFives)seriesTest1).getPrevious());
+		}
 	}
 }
