@@ -1,6 +1,6 @@
+//Madalyn Botkin
 //EmployeeTest.java
-//
-//
+//EmployeeTest will test the class and subclasses and all their methods.
 
 abstract class Employee
 {
@@ -70,13 +70,16 @@ abstract class Employee
 	}
 	
 	
-	//abstracts
+	//others
 	
 	abstract public double calcPay();
 		
-	abstract public String toString();
+	public String toString()
+	{
+		return "";
+	}
 		
-}
+}//end of Employee class
 
 class SalariedEmp extends Employee
 {
@@ -114,15 +117,68 @@ class HourlyEmp extends Employee
 {
 	protected double hourlyWage;
 	protected int hoursPerWeek;	//the number of hours worked per week
+	
+	//constructors
+	
+	//default constructor
+	public SalariedEmp()
+	{
+		super();
+	}
+	
+	//constructor that accepts the variables as parameters
+	public SalariedEmp(String firstName, String lastName, int SSN)
+	{
+		super();
+	}
 }
 
 class CommissionEmp extends Employee
 {
 	protected double commRate;	//the commission rate
 	protected double weeklyGrossSales;
+	
+	//constructors
+	
+	//default constructor
+	public SalariedEmp()
+	{
+		super();
+	}
+	
+	//constructor that accepts the variables as parameters
+	public SalariedEmp(String firstName, String lastName, int SSN)
+	{
+		super();
+	}
 }
 
 class BasePlusCommissionEmp extends CommissionEmp
 {
 	protected double weeklyBaseSalary;
+	
+	//constructors
+	
+	//default constructor
+	public SalariedEmp()
+	{
+		super();
+	}
+	
+	//constructor that accepts the variables as parameters
+	public SalariedEmp(String firstName, String lastName, int SSN)
+	{
+		super();
+	}
+}
+
+
+
+
+public class EmployeeTest
+{
+	public static void main(String [] args)
+	{
+		
+	}
 }
