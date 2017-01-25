@@ -52,19 +52,19 @@ abstract class Employee
 	//getters
 	
 	//get firstName
-	public String getFirstName(String firstName)
+	public String getFirstName()
 	{
 		return firstName;
 	}
 	
 	//get lastName
-	public String getLastName(String lastName)
+	public String getLastName()
 	{
 		return lastName;
 	}
 	
 	//get SSN
-	public int getSSN(int SSN)
+	public int getSSN()
 	{
 		return SSN;
 	}
@@ -77,6 +77,7 @@ abstract class Employee
 	public String toString()
 	{
 		return "";
+		//return "Name: " + getFirstName();
 	}
 		
 }//end of Employee class
@@ -107,11 +108,12 @@ class SalariedEmp extends Employee
 		return weeklySalary;
 	}
 		
-	/*public String toString()
+	public String toString()
 	{
 		return "";
-	}*/
-}
+		//return "Name: " + super.getFirstName() + super.getLastName() + "Social Security Number: " + super.getSSN();
+	}
+}//end of SalariedEmp
 
 class HourlyEmp extends Employee
 {
@@ -121,13 +123,13 @@ class HourlyEmp extends Employee
 	//constructors
 	
 	//default constructor
-	public SalariedEmp()
+	public HourlyEmp()
 	{
 		super();
 	}
 	
 	//constructor that accepts the variables as parameters
-	public SalariedEmp(String firstName, String lastName, int SSN)
+	public HourlyEmp(String firstName, String lastName, int SSN)
 	{
 		super();
 	}
@@ -141,13 +143,13 @@ class CommissionEmp extends Employee
 	//constructors
 	
 	//default constructor
-	public SalariedEmp()
+	public CommissionEmp()
 	{
 		super();
 	}
 	
 	//constructor that accepts the variables as parameters
-	public SalariedEmp(String firstName, String lastName, int SSN)
+	public CommissionEmp(String firstName, String lastName, int SSN)
 	{
 		super();
 	}
@@ -160,13 +162,13 @@ class BasePlusCommissionEmp extends CommissionEmp
 	//constructors
 	
 	//default constructor
-	public SalariedEmp()
+	public BasePlusCommissionEmp()
 	{
 		super();
 	}
 	
 	//constructor that accepts the variables as parameters
-	public SalariedEmp(String firstName, String lastName, int SSN)
+	public BasePlusCommissionEmp(String firstName, String lastName, int SSN)
 	{
 		super();
 	}
@@ -179,6 +181,9 @@ public class EmployeeTest
 {
 	public static void main(String [] args)
 	{
+		Employee employee;
+		employee = new SalariedEmp();
 		
+		System.out.print("Salaried Employee:\n");
 	}
 }
