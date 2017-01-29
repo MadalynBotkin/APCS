@@ -95,9 +95,10 @@ class SalariedEmp extends Employee
 	}
 	
 	//constructor that accepts the variables as parameters
-	public SalariedEmp(String firstName, String lastName, int SSN)
+	public SalariedEmp(String firstName, String lastName, int SSN, double weeklySalary)
 	{
 		super();
+		this.weeklySalary = weeklySalary;
 	}
 	
 	
@@ -133,7 +134,15 @@ class HourlyEmp extends Employee
 	{
 		super();
 	}
-}
+	
+	
+	//methods
+	
+	public double calcPay()
+	{
+		return hourlyWage * hoursPerWeek;
+	}
+}//end of HourlyEmp
 
 class CommissionEmp extends Employee
 {
@@ -153,7 +162,15 @@ class CommissionEmp extends Employee
 	{
 		super();
 	}
-}
+	
+	
+	//methods
+	
+	public double calcPay()
+	{
+		return weeklyGrossSales * commRate;
+	}
+}//end of CommisionEmp
 
 class BasePlusCommissionEmp extends CommissionEmp
 {
@@ -172,7 +189,15 @@ class BasePlusCommissionEmp extends CommissionEmp
 	{
 		super();
 	}
-}
+	
+	
+	//methods
+	
+	public double calcPay()
+	{
+		return weeklyBaseSalary + (weeklyGrossSales * commRate);
+	}
+}//end of BasePlusCommisionEmp
 
 
 
@@ -181,8 +206,12 @@ public class EmployeeTest
 {
 	public static void main(String [] args)
 	{
+		//variables
+		
 		Employee employee;
-		employee = new SalariedEmp();
+		employee = new SalariedEmp();	//using the default constructor
+		
+		
 		
 		System.out.print("Salaried Employee:\n");
 	}
