@@ -104,6 +104,11 @@ class SalariedEmp extends Employee
 	
 	//methods
 	
+	/*public void setWeeklySalary(double weeklySalary)
+	{
+		this.weeklySalary = weeklySalary;
+	}*/
+	
 	public double calcPay()
 	{
 		return weeklySalary;
@@ -111,8 +116,7 @@ class SalariedEmp extends Employee
 		
 	public String toString()
 	{
-		return "";
-		//return "Name: " + super.getFirstName() + super.getLastName() + "Social Security Number: " + super.getSSN();
+		return "Name: " + super.getFirstName() + " " + super.getLastName() + "\nSocial Security Number: " + super.getSSN() + "\nWeekly Salary: $" + calcPay() + "\n";
 	}
 }//end of SalariedEmp
 
@@ -206,13 +210,16 @@ public class EmployeeTest
 {
 	public static void main(String [] args)
 	{
-		//variables
+		/*Employee employee;
+		employee = new SalariedEmp();	//using the default constructor*/
 		
-		Employee employee;
-		employee = new SalariedEmp();	//using the default constructor
+		SalariedEmp salEmp1;
 		
+		/*employee.setFirstName("Billy");
+		employee.setLastName("Bob");
+		employee.setSSN(123456789);
+		employee.setWeeklySalary(23.0);
 		
-		
-		System.out.print("Salaried Employee:\n");
+		System.out.print("Salaried Employee:\n\n" + employee.toString());*/
 	}
 }
