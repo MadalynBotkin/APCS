@@ -213,12 +213,15 @@ public class EmployeeTest
 		Employee employee;
 		employee = new SalariedEmp();	//using the default constructor
 		
-		
 		employee.setFirstName("Billy");
 		employee.setLastName("Bob");
 		((SalariedEmp)employee).setSSN(123456789);
 		((SalariedEmp)employee).setWeeklySalary(23.0);
 		
-		System.out.print("Salaried Employee:\n\n" + employee.toString());
+		System.out.print("Salaried Employees:\n\n" + employee.toString());
+		
+		employee = new SalariedEmp("Joe", "Joe", 987654321, 30.0);
+		
+		System.out.print("\n" + employee.toString());
 	}
 }
