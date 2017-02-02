@@ -104,10 +104,10 @@ class SalariedEmp extends Employee
 	
 	//methods
 	
-	/*public void setWeeklySalary(double weeklySalary)
+	public void setWeeklySalary(double weeklySalary)
 	{
 		this.weeklySalary = weeklySalary;
-	}*/
+	}
 	
 	public double calcPay()
 	{
@@ -210,16 +210,15 @@ public class EmployeeTest
 {
 	public static void main(String [] args)
 	{
-		/*Employee employee;
-		employee = new SalariedEmp();	//using the default constructor*/
+		Employee employee;
+		employee = new SalariedEmp();	//using the default constructor
 		
-		SalariedEmp salEmp1;
 		
-		/*employee.setFirstName("Billy");
+		employee.setFirstName("Billy");
 		employee.setLastName("Bob");
-		employee.setSSN(123456789);
-		employee.setWeeklySalary(23.0);
+		((SalariedEmp)employee).setSSN(123456789);
+		((SalariedEmp)employee).setWeeklySalary(23.0);
 		
-		System.out.print("Salaried Employee:\n\n" + employee.toString());*/
+		System.out.print("Salaried Employee:\n\n" + employee.toString());
 	}
 }
