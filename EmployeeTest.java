@@ -97,7 +97,7 @@ class SalariedEmp extends Employee
 	//constructor that accepts the variables as parameters
 	public SalariedEmp(String firstName, String lastName, int SSN, double weeklySalary)
 	{
-		super();
+		super(firstName, lastName, SSN);
 		this.weeklySalary = weeklySalary;
 	}
 	
@@ -114,9 +114,9 @@ class SalariedEmp extends Employee
 		return weeklySalary;
 	}
 		
-	public String toString()
+	public String toString()	//return all of its information
 	{
-		return "Name: " + super.getFirstName() + " " + super.getLastName() + "\nSocial Security Number: " + super.getSSN() + "\nWeekly Salary: $" + calcPay() + "\n";
+		return "Name: " + super.getFirstName() + " " + super.getLastName() + "\nSocial Security Number: " + super.getSSN() + "\nPay: $" + calcPay() + "\n";
 	}
 }//end of SalariedEmp
 
@@ -134,9 +134,11 @@ class HourlyEmp extends Employee
 	}
 	
 	//constructor that accepts the variables as parameters
-	public HourlyEmp(String firstName, String lastName, int SSN)
+	public HourlyEmp(String firstName, String lastName, int SSN, double hourlyWage, int hoursPerWeek)
 	{
-		super();
+		super(firstName, lastName, SSN);
+		this.hourlyWage = hourlyWage;
+		this.hoursPerWeek = hoursPerWeek;
 	}
 	
 	
@@ -145,6 +147,11 @@ class HourlyEmp extends Employee
 	public double calcPay()
 	{
 		return hourlyWage * hoursPerWeek;
+	}
+	
+	public String toString()	//return all of its information
+	{
+		return "Name: " + super.getFirstName() + " " + super.getLastName() + "\nSocial Security Number: " + super.getSSN() + "\nPay: $" + calcPay() + "\n";
 	}
 }//end of HourlyEmp
 
@@ -210,18 +217,32 @@ public class EmployeeTest
 {
 	public static void main(String [] args)
 	{
-		Employee employee;
-		employee = new SalariedEmp();	//using the default constructor
+		Employee salEmp1, salEmp2, hourEmp1, hourEmp2;
 		
-		employee.setFirstName("Billy");
-		employee.setLastName("Bob");
-		((SalariedEmp)employee).setSSN(123456789);
-		((SalariedEmp)employee).setWeeklySalary(23.0);
+		//salaried employees
 		
-		System.out.print("Salaried Employees:\n\n" + employee.toString());
+		salEmp1 = new SalariedEmp();	//using the default constructor
+		salEmp2 = new SalariedEmp("Joe", "Joe", 111111111, 30.0);	//using constructor with parameters
 		
-		employee = new SalariedEmp("Joe", "Joe", 987654321, 30.0);
+		salEmp1.setFirstName("Billy");
+		salEmp1.setLastName("Bob");
+		((SalariedEmp)salEmp1).setSSN(123456789);
+		((SalariedEmp)salEmp1).setWeeklySalary(23.0);
 		
-		System.out.print("\n" + employee.toString());
+		System.out.print("Salaried Employees:\n\n" + salEmp1.toString());
+		System.out.print("\n" + salEmp2.toString());
+		
+		//hourly employees
+		
+		hourEmp1 = new HourlyEmp();	//using the default constructor
+		hourEmp2 = new HourlyEmp("Gravy", "Train", 121212123, 15, 200);	//using constructor with parameters
+		
+		salEmp1.setFirstName("Janice");
+		salEmp1.setLastName("Smith");
+		((SalariedEmp)salEmp1).setSSN(112358132);
+		((SalariedEmp)salEmp1).setWeeklySalary(23.0);
+		
+		System.out.print("Salaried Employees:\n\n" + salEmp1.toString());
+		System.out.print("\n" + salEmp2.toString());
 	}
 }
