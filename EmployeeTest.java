@@ -72,7 +72,7 @@ abstract class Employee
 	
 	//others
 	
-	abstract public double calcPay();
+	abstract public double calcPay();	//to be written in all the other classes
 		
 	public String toString()
 	{
@@ -97,18 +97,20 @@ class SalariedEmp extends Employee
 	//constructor that accepts the variables as parameters
 	public SalariedEmp(String firstName, String lastName, int SSN, double weeklySalary)
 	{
-		super(firstName, lastName, SSN);
+		super(firstName, lastName, SSN);	//these variables need to be sent up to the Employee class to get set, because SalariedEmp doesn't do that
 		this.weeklySalary = weeklySalary;
 	}
 	
 	
 	//methods
 	
+	//set weeklySalary
 	public void setWeeklySalary(double weeklySalary)
 	{
 		this.weeklySalary = weeklySalary;
 	}
 	
+	//calculate how much the employee gets paid
 	public double calcPay()
 	{
 		return weeklySalary;
@@ -136,7 +138,7 @@ class HourlyEmp extends Employee
 	//constructor that accepts the variables as parameters
 	public HourlyEmp(String firstName, String lastName, int SSN, double hourlyWage, int hoursPerWeek)
 	{
-		super(firstName, lastName, SSN);
+		super(firstName, lastName, SSN);	//send up to Employee class
 		this.hourlyWage = hourlyWage;
 		this.hoursPerWeek = hoursPerWeek;
 	}
@@ -144,19 +146,22 @@ class HourlyEmp extends Employee
 	
 	//methods
 	
+	//set hourlyWage
 	public void setHourlyWage(double hourlyWage)
 	{
 		this.hourlyWage = hourlyWage;
 	}
 	
+	//set hoursPerWeek
 	public void setHoursPerWeek(int hoursPerWeek)
 	{
 		this.hoursPerWeek = hoursPerWeek;
 	}
 	
+	//calculate how much the employee gets paid
 	public double calcPay()
 	{
-		return hourlyWage * hoursPerWeek;
+		return hourlyWage * hoursPerWeek;	//the hourly wage times how many hours the employee worked during the week
 	}
 	
 	public String toString()	//return all of its information
@@ -181,7 +186,7 @@ class CommissionEmp extends Employee
 	//constructor that accepts the variables as parameters
 	public CommissionEmp(String firstName, String lastName, int SSN, double commRate, double weeklyGrossSales)
 	{
-		super(firstName, lastName, SSN);
+		super(firstName, lastName, SSN);	//send up to Employee class
 		this.commRate = commRate;
 		this.weeklyGrossSales = weeklyGrossSales;
 	}
@@ -189,19 +194,22 @@ class CommissionEmp extends Employee
 	
 	//methods
 	
+	//set the commission rate
 	public void setCommRate(double commRate)
 	{
 		this.commRate = commRate;
 	}
 	
+	//set weeklyGrossSales
 	public void setWeeklyGrossSales(double weeklyGrossSales)
 	{
 		this.weeklyGrossSales = weeklyGrossSales;
 	}
 	
+	//calculate how much the employee gets paid
 	public double calcPay()
 	{
-		return weeklyGrossSales * commRate;
+		return weeklyGrossSales * commRate;	//commission employees get a portion of the weekly gross sales, so commRate is mult. by weeklyGrossSales
 	}
 	
 	public String toString()	//return all of its information
@@ -223,17 +231,25 @@ class BasePlusCommissionEmp extends CommissionEmp
 	}
 	
 	//constructor that accepts the variables as parameters
-	public BasePlusCommissionEmp(String firstName, String lastName, int SSN)
+	public BasePlusCommissionEmp(String firstName, String lastName, int SSN, double commRate, double weeklyGrossSales, double weeklyBaseSalary)
 	{
-		super();
+		super(firstName, lastName, SSN, commRate, weeklyGrossSales);	//need to be sent up to CommissionEmp and Employee classes
+		this.weeklyBaseSalary = weeklyBaseSalary;
 	}
 	
 	
 	//methods
 	
+	//set weeklyBaseSalary
+	public void setWeeklyBaseSalary(double weeklyBaseSalary)
+	{
+		this.weeklyBaseSalary = weeklyBaseSalary;
+	}
+	
+	//calculate how much the employee gets paid
 	public double calcPay()
 	{
-		return weeklyBaseSalary + (weeklyGrossSales * commRate);
+		return weeklyBaseSalary + (weeklyGrossSales * commRate);	//the employee's base salary plus commission pay
 	}
 }//end of BasePlusCommisionEmp
 
@@ -279,7 +295,7 @@ public class EmployeeTest
 		//commission employees
 		
 		commEmp1 = new CommissionEmp();	//using the default constructor
-		commEmp2 = new CommissionEmp("John", "Watson", 132333435, 20.75, 14.50);	//using constructor with parameters
+		commEmp2 = new CommissionEmp("John", "Watson", 132333435, .25, 240.75);	//using constructor with parameters
 		
 		commEmp1.setFirstName("Erik");
 		commEmp1.setLastName("Satie");
@@ -292,16 +308,17 @@ public class EmployeeTest
 		
 		//base plus commission employees
 		
-		commPlusBaseEmp1 = new CommissionPlusBaseEmp();	//using the default constructor
-		commPlusBaseEmp2 = new CommissionPlusBaseEmp("Queen", "Elizabeth", 311748314, 50, 14.50);	//using constructor with parameters
+		commPlusBaseEmp1 = new BasePlusCommissionEmp();	//using the default constructor
+		commPlusBaseEmp2 = new BasePlusCommissionEmp("Queen", "Elizabeth", 311748314, 50, 20.5, 100.75);	//using constructor with parameters
 		
 		commPlusBaseEmp1.setFirstName("Mary");
 		commPlusBaseEmp1.setLastName("Watson");
 		((CommissionEmp)commPlusBaseEmp1).setSSN(171714874);
-		((CommissionEmp)commPlusBaseEmp1).setCommRate(7.50);
-		((CommissionEmp)commPlusBaseEmp1).setWeeklyGrossSales(20);
+		((CommissionEmp)commPlusBaseEmp1).setCommRate(.15);
+		((CommissionEmp)commPlusBaseEmp1).setWeeklyGrossSales(435.25);
+		((BasePlusCommissionEmp)commPlusBaseEmp1).setWeeklyBaseSalary(50.5);
 		
-		System.out.print("\n\n\nCommission Employees:\n\n" + commPlusBaseEmp1.toString());
+		System.out.print("\n\n\nCommission Plus Base Employees:\n\n" + commPlusBaseEmp1.toString());
 		System.out.print("\n" + commPlusBaseEmp2.toString());
 	}
 }
