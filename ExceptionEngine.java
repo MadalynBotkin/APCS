@@ -57,6 +57,8 @@ public class ExceptionEngine
 			switch (input)
 			{
 				case 1:
+					
+					
 					return true;
 				case 2:
 					if (exceptionDescription.equals("NullPointer"))
@@ -74,10 +76,6 @@ public class ExceptionEngine
 					}
 			}
 		}
-		
-//		else	//is this else necessary?
-//		{
 			return false;
-//		}
 	}
 }
