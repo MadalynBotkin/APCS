@@ -57,9 +57,17 @@ public class ExceptionEngine
 			switch (input)
 			{
 				case 1:
-					
-					
+					try
+					{
+						String nullString = null;
+						System.out.print(nullString.length());//causes a null pointer exception
+					}
+					catch(Exception e)
+					{
+						System.out.print("Uh-oh. There's a null pointer exception here.\n\n");
+					}
 					return true;
+					
 				case 2:
 					if (exceptionDescription.equals("NullPointer"))
 					{
