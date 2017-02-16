@@ -57,7 +57,7 @@ class Dog
 	}
 }
 
-public class DogTracker
+public class DogCompare
 {
 	public static void main(String [] args)
 	{
@@ -88,6 +88,7 @@ public class DogTracker
 					for (; index < 5; index++)
 					{
 						System.out.print("\n\nNew dog:\n\nName: ");
+						reader.nextLine();	//clean out reader
 						name = reader.nextLine();
 						System.out.print("Age: ");
 						age = reader.nextInt();
@@ -98,8 +99,10 @@ public class DogTracker
 						
 						dogArray[index] = new Dog(name, age, weight, numBarks);	//put a new dog in the array
 					}
+					break;
 				case 2:
 					System.out.print("Enter dog's name: ");
+					reader.nextLine();	//clean out reader
 					findName = reader.nextLine();
 					
 					//loops until dog is found or until the whole array has been searched with no result
@@ -117,6 +120,7 @@ public class DogTracker
 							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
 						}
 					}
+					break;
 				case 3:
 					//find an empty slot in the array
 					//loops until empty space is found or if whole array is found to be full
@@ -126,6 +130,7 @@ public class DogTracker
 						if (dogArray[index] == null)
 						{
 							System.out.print("\n\nNew dog:\n\nName: ");
+							reader.nextLine();	//clean out reader
 							name = reader.nextLine();
 							System.out.print("Age: ");
 							age = reader.nextInt();
@@ -143,8 +148,10 @@ public class DogTracker
 							System.out.print("Sorry, but there is no more room for another dog.");
 						}
 					}
+					break;
 				case 4:
 					System.out.print("Enter dog's name: ");
+					reader.nextLine();	//clean out reader
 					findName = reader.nextLine();
 					
 					//search array for dog
@@ -163,6 +170,7 @@ public class DogTracker
 							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
 						}
 					}
+					break;
 			}//end of switch
 		}//end of while loop
 	}//end of main
