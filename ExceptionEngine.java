@@ -41,9 +41,14 @@ public class ExceptionEngine
 						{
 							System.out.print("\n1) Handle the ArimeticException\n2) Abort\n\n");
 							input =  reader.nextInt();
+							
+							switch (input)
+							{
+								case 1:
+									
+							}
 						}
 			}
-			try {java.lang.Thread.sleep(100);} catch(Exception e) {}
 		}
 	}//end of main
 	
