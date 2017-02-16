@@ -111,7 +111,7 @@ public class DogCompare
 						//if dog is found, output all its data
 						if (findName.equals(dogArray[index].getName()))
 						{
-							System.out.print(name + " has been found\nName: " + dogArray[index].getName() + "\nAge: " + dogArray[index].getAge() + "\nWeight: " + dogArray[index].getWeight() + "\nNumber of barks: " + dogArray[index].getBarks());
+							System.out.print(dogArray[index].getName() + " has been found\nName: " + dogArray[index].getName() + "\nAge: " + dogArray[index].getAge() + "\nWeight: " + dogArray[index].getWeight() + "\nNumber of barks: " + dogArray[index].getBarks() + "\n\n");
 						}	
 						
 						//if the dog was never found
