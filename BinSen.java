@@ -11,8 +11,11 @@ public class BinSen
 		int[] array = new int[15];
 		int ranNum = (int)(Math.random() * 10) + 1;	//randomly generated number
 		int arrayNum = ranNum;
-		int searchNum = 0;
+		int searchNum = 0;	//the number the user wants to find in the array
 		int compCount = 0;	//comparison count
+		int left = 0;	//leftmost index of binary search
+		int right = 0;	//rightmost index of binary search
+		int midpoint = 0;	//midpoint of binary search
 		boolean found = false;	//whether searchNum has been found or not
 		Scanner reader = new Scanner(System.in);
 		
@@ -51,15 +54,46 @@ public class BinSen
 			if (array[i] == searchNum)
 			{
 				System.out.print("\n\nSequential Search:\n*******************\nSearch Number: " + searchNum + "\nPosition in Array: " + i + "\nComparisons to Find it: " + compCount);
+				found = true;
 			}
 			
-			if (i == 14 && array[i] != searchNum)
+			if (i == 14 && found == false)	//if the number was never found
 			{
-				
+				System.out.print("\n\n" + searchNum + " could not be found.\nComparisons Done: " + compCount);
 			}
 		}
 		
-		//binary search
+		found = false;
 		
+		//binary search
+		right = array.length - 1;
+		midpoint = (left + right) / 2;
+		
+		while()
+		{
+			//if the number is found
+			if (searchNum == array[midpoint])
+			{
+				found = true;
+			}
+			
+			//need to adjust the search up
+			if (searchNum > array[midpoint])
+			{
+				left = midpoint;
+			}
+			
+			//need to adjust the search down
+			if (searchNum < array[midpoint])
+			{
+				right = midpoint;
+			}
+		}
+		
+		//if the 
+		if (found == false)
+		{
+			
+		}	
 	}
 }
