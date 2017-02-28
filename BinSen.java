@@ -1,6 +1,6 @@
 //Madalyn Botkin
 //BinSen.java
-//
+//An array of multiples of a randomly generated number is created. The user enters a number to be found in the array, and both a sequential search and binary search are used to find it.
 
 import java.util.Scanner;
 
@@ -47,6 +47,8 @@ public class BinSen
 		System.out.print("\n\nWhat integer do you want to find?: ");
 		searchNum = reader.nextInt();
 		
+		
+		
 		//sequential search
 		for (int i = 0; i < array.length; i++)
 		{
@@ -59,21 +61,29 @@ public class BinSen
 			
 			if (i == 14 && found == false)	//if the number was never found
 			{
-				System.out.print("\n\n" + searchNum + " could not be found.\nComparisons Done: " + compCount);
+				System.out.print("\n\nSequential Search:\n" + searchNum + " could not be found.\nComparisons Done: " + compCount);
 			}
 		}
 		
 		found = false;
+		compCount = 0;
+		
+		
 		
 		//binary search
 		right = array.length - 1;
-		midpoint = (left + right) / 2;
 		
-		while()
+		while (left < right && found == false)
 		{
+			midpoint = (left + right) / 2;
+			compCount++;
+			
 			//if the number is found
 			if (searchNum == array[midpoint])
 			{
+				found = true;
+				
+				System.out.print("\n\nBinary Search:\n*******************\nSearch Number: " + searchNum + "\nPosition in Array: " + midpoint + "\nComparisons to Find it: " + compCount);
 				found = true;
 			}
 			
@@ -90,10 +100,10 @@ public class BinSen
 			}
 		}
 		
-		//if the 
+		//if the number was never found
 		if (found == false)
 		{
-			
+			System.out.print("\n\nBinary Search:\n" + searchNum + " could not be found.\nComparisons Done: " + compCount + "\n\n\n");
 		}	
 	}
 }
