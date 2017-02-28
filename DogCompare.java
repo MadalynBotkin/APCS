@@ -78,7 +78,7 @@ public class DogCompare
 		//loops until user enters 5 for quit
 		while (menuOption != 5)
 		{
-			System.out.print("Enter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2)Find a Dog\n3)Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
+			System.out.print("Enter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2) Find a Dog\n3) Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
 			menuOption = reader.nextInt();
 			
 			switch (menuOption)
@@ -95,13 +95,13 @@ public class DogCompare
 						System.out.print("Weight: ");
 						weight = reader.nextInt();
 						System.out.print("Number of barks: ");
-						numBarks = reader.nextInt();					
+						numBarks = reader.nextInt();
 						
 						dogArray[index] = new Dog(name, age, weight, numBarks);	//put a new dog in the array
 					}
 					break;
 				case 2:
-					System.out.print("Enter dog's name: ");
+					System.out.print("\n\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
 					findName = reader.nextLine();
 					
@@ -115,7 +115,7 @@ public class DogCompare
 						}	
 						
 						//if the dog was never found
-						else if (index == 5)
+						else if (index == 4 && !findName.equals(dogArray[index].getName()))
 						{
 							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
 						}
