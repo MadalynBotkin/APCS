@@ -57,6 +57,11 @@ class Dog
 	}
 }
 
+
+
+
+
+
 public class DogCompare
 {
 	public static void main(String [] args)
@@ -103,8 +108,23 @@ public class DogCompare
 				case 2:
 					System.out.print("\n\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
-					findName = reader.nextLine();
+					name = reader.nextLine();
+					System.out.print("\n\nEnter dog's age: ");
+					age = reader.nextLine();
+					System.out.print("\n\nEnter dog's weight: ");
+					weight = reader.nextLine();
+					System.out.print("\n\nEnter dog's number of barks: ");
+					numBarks = reader.nextLine();
 					
+					Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
+					for ( : dogArray)
+					{
+						
+					}
+					
+					
+					
+					/*
 					//loops until dog is found or until the whole array has been searched with no result
 					for (index = 0; index < 5 && !findName.equals(name); index++)
 					{
@@ -119,7 +139,7 @@ public class DogCompare
 						{
 							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
 						}
-					}
+					}*/
 					break;
 				case 3:
 					//find an empty slot in the array
