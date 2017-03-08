@@ -1,6 +1,7 @@
 //Madalyn Botkin
 //DogCompare.java
-//
+//The DogCompare class will test the constructor and all methods of the Dog class. Using DogCompare, the user can have 5 dogs, find specific dogs, and add and delete them.
+//	This new version of DogTracker uses for each loops and a compareTo method that can compare Dog objects to each other. 64 153
 
 import java.util.Scanner;
 
@@ -50,12 +51,40 @@ class Dog
 		//add "bark" to the string for as many barks the dog did
 		for (int barks = numBarks; barks > 0; barks--)
 		{
-			barkString+="bark ";
+			barkString += "bark ";
 		}
 		
 		return barkString;
 	}
+	
+	//method to compare dogs to each other
+	public int compareTo(Dog dog, Dog searchDog)
+	{
+		//if the 2 dogs are identical, return 0
+		if (searchDog.getName().equals(dog.getName()) && searchDog.getAge() == dog.getAge() && searchDog.getWeight() == dog.getWeight())
+		{
+			return 0;
+		}
+		
+		//if the dog being sought is less than the dog it's being compared to, return -1
+		if (searchDog.getName().compareTo(dog.getName()) < 0 || searchDog.getAge() < dog.getAge() || searchDog.getWeight() < dog.getWeight())
+		{
+			return -1;
+		}
+		
+		//if the dog being sought is greater than the dog it's being compared to, return 1
+		if (searchDog.getName().compareTo(dog.getName()) > 0 || searchDog.getAge() > dog.getAge() || searchDog.getWeight() > dog.getWeight())
+		{
+			return 1;
+		}
+		
+		return -1;
+	}
 }
+
+
+
+
 
 
 
@@ -67,7 +96,7 @@ public class DogCompare
 	public static void main(String [] args)
 	{
 		Scanner reader = new Scanner(System.in);
-		Dog[] dogArray = new Dog[5];	//the array of 5 dogs
+		Dog[] dogArray = new Dog[2];	//the array of 5 dogs//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		String name = "";
 		int age = 0;
@@ -76,6 +105,7 @@ public class DogCompare
 		int menuOption = 0;
 		String findName = "";
 		int index = 0;
+		boolean found = false;
 		
 		
 		//Dog dog = new Dog(name, age, weight, numBarks);
@@ -83,14 +113,14 @@ public class DogCompare
 		//loops until user enters 5 for quit
 		while (menuOption != 5)
 		{
-			System.out.print("Enter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2) Find a Dog\n3) Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
+			System.out.print("\n\nEnter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2) Find a Dog\n3) Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
 			menuOption = reader.nextInt();
 			
 			switch (menuOption)
 			{
 				case 1:
 					//loops 5 times, once for each dog in the array
-					for (; index < 5; index++)
+					for (; index < 2; index++)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					{
 						System.out.print("\n\nNew dog:\n\nName: ");
 						reader.nextLine();	//clean out reader
@@ -110,16 +140,27 @@ public class DogCompare
 					reader.nextLine();	//clean out reader
 					name = reader.nextLine();
 					System.out.print("\n\nEnter dog's age: ");
-					age = reader.nextLine();
+					age = reader.nextInt();
 					System.out.print("\n\nEnter dog's weight: ");
-					weight = reader.nextLine();
+					weight = reader.nextInt();
 					System.out.print("\n\nEnter dog's number of barks: ");
-					numBarks = reader.nextLine();
+					numBarks = reader.nextInt();
 					
 					Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
-					for ( : dogArray)
+					for (Dog dog : dogArray)
 					{
+						//if dog is found, output all its data
+						if (searchDog.compareTo(dog, searchDog) == 0)
+						{
+							System.out.print("\n\n" + dog.getName() + " has been found\nName: " + dog.getName() + "\nAge: " + dog.getAge() + "\nWeight: " + dog.getWeight() + "\nNumber of barks: " + dog.getBarks() + "\n\n");
+							found = true;
+						}
 						
+						//if the dog was never found
+						else if (searchDog.compareTo(dog, searchDog) != 0 && found == false)
+						{
+							System.out.print("Sorry, " + searchDog.getName() + " has not been found");
+						}
 					}
 					
 					
