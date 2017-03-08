@@ -113,7 +113,7 @@ public class DogCompare
 		//loops until user enters 5 for quit
 		while (menuOption != 5)
 		{
-			System.out.print("\n\nEnter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2) Find a Dog\n3) Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
+			System.out.print("\nEnter a number to choose from menu:\n\n1) Enter Initial Dog Data\n2) Find a Dog\n3) Insert/Add New Dog\n4) Delete an Existing Dog :(\n5) Quit\n\n");
 			menuOption = reader.nextInt();
 			
 			switch (menuOption)
