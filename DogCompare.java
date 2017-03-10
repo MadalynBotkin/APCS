@@ -43,6 +43,12 @@ class Dog
 		return weight;
 	}
 	
+	//returns the dog's weight
+	public int getNumBarks()
+	{
+		return numBarks;
+	}
+	
 	//returns a string of how many barks the dog did
 	public String getBarks()
 	{
@@ -60,33 +66,16 @@ class Dog
 	//method to compare dogs to each other
 	public int compareTo(Dog dog)
 	{
-		int searchDogSum = (name.compareTo(dog.getName()) + age + weight + numBarks);
-		
 		//if the dog being sought is not there
 		if (dog == null)
 		{
 			return -1;
 		}
 		
-		//if the 2 dogs are identical, return 0
-		if (searchDog.getName().equals(dog.getName()) && searchDog.getAge() == dog.getAge() && searchDog.getWeight() == dog.getWeight())
-		{
-			return 0;
-		}
+		int searchDogSum = (name.compareTo(dog.getName()) + age + weight);
+		int dogSum = (dog.getName().compareTo(name) + dog.getAge() + dog.getWeight());
 		
-		//if the dog being sought is less than the dog it's being compared to, return -1
-		if (searchDog.getName().compareTo(dog.getName()) < 0 || searchDog.getAge() < dog.getAge() || searchDog.getWeight() < dog.getWeight())
-		{
-			return -1;
-		}
-		
-		//if the dog being sought is greater than the dog it's being compared to, return 1
-		if (searchDog.getName().compareTo(dog.getName()) > 0 || searchDog.getAge() > dog.getAge() || searchDog.getWeight() > dog.getWeight())
-		{
-			return 1;
-		}
-		
-		return -1;
+		return searchDogSum - dogSum;
 	}
 }
 
