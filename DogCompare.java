@@ -1,7 +1,7 @@
 //Madalyn Botkin
 //DogCompare.java
 //The DogCompare class will test the constructor and all methods of the Dog class. Using DogCompare, the user can have 5 dogs, find specific dogs, and add and delete them.
-//	This new version of DogTracker uses for each loops and a compareTo method that can compare Dog objects to each other. 64 153
+//	This new version of DogTracker uses for each loops and a compareTo method that can compare Dog objects to each other.
 
 import java.util.Scanner;
 
@@ -60,6 +60,12 @@ class Dog
 	//method to compare dogs to each other
 	public int compareTo(Dog dog, Dog searchDog)
 	{
+		//if the dog being sought is not there
+		if (dog == null)
+		{
+			return -1;
+		}
+		
 		//if the 2 dogs are identical, return 0
 		if (searchDog.getName().equals(dog.getName()) && searchDog.getAge() == dog.getAge() && searchDog.getWeight() == dog.getWeight())
 		{
@@ -136,15 +142,17 @@ public class DogCompare
 					}
 					break;
 				case 2:
-					System.out.print("\n\nEnter dog's name: ");
+					System.out.print("\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
 					name = reader.nextLine();
-					System.out.print("\n\nEnter dog's age: ");
+					System.out.print("Enter dog's age: ");
 					age = reader.nextInt();
-					System.out.print("\n\nEnter dog's weight: ");
+					System.out.print("Enter dog's weight: ");
 					weight = reader.nextInt();
-					System.out.print("\n\nEnter dog's number of barks: ");
+					System.out.print("Enter dog's number of barks: ");
 					numBarks = reader.nextInt();
+					
+					index = 0;
 					
 					Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
 					for (Dog dog : dogArray)
@@ -157,10 +165,12 @@ public class DogCompare
 						}
 						
 						//if the dog was never found
-						else if (searchDog.compareTo(dog, searchDog) != 0 && found == false)
+						else if (searchDog.compareTo(dog, searchDog) != 0 && found == false && index == dogArray.length)
 						{
 							System.out.print("Sorry, " + searchDog.getName() + " has not been found");
 						}
+						
+						index++;
 					}
 					
 					
@@ -185,7 +195,7 @@ public class DogCompare
 				case 3:
 					//find an empty slot in the array
 					//loops until empty space is found or if whole array is found to be full
-					for (index = 0; index < 5 && dogArray[index] != null; index++)
+					for (index = 0; index < 2 && dogArray[index] != null; index++)//////////////////////////////////////////////////////////////////////////////////////////////////
 					{
 						//if empty space found, enter in a new dog
 						if (dogArray[index] == null)
@@ -204,18 +214,46 @@ public class DogCompare
 						}
 						
 						//if no empty space was found
-						else if (index == 5)
+						else if (index == 1)///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						{
 							System.out.print("Sorry, but there is no more room for another dog.");
 						}
 					}
 					break;
 				case 4:
-					System.out.print("Enter dog's name: ");
+					System.out.print("\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
-					findName = reader.nextLine();
+					name = reader.nextLine();
+					System.out.print("Enter dog's age: ");
+					age = reader.nextInt();
+					System.out.print("Enter dog's weight: ");
+					weight = reader.nextInt();
+					System.out.print("Enter dog's number of barks: ");
+					numBarks = reader.nextInt();
 					
-					//search array for dog
+					index = 0;
+					
+					Dog searchDog2 = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
+					for (Dog dog : dogArray)
+					{
+						//if dog is found, output all its data
+						if (searchDog2.compareTo(dog, searchDog2) == 0)
+						{
+							dogArray[index] = null;	//make that dog object null
+							System.out.print("The dog has been deleted.");
+							found = true;
+						}
+						
+						//if the dog was never found
+						else if (searchDog2.compareTo(dog, searchDog2) != 0 && found == false && index == dogArray.length)
+						{
+							System.out.print("Sorry, " + searchDog2.getName() + " has not been found");
+						}
+						
+						index++;
+					}
+					
+					/*search array for dog
 					for (index = 0; index < 5 && !findName.equals(name); index++)
 					{
 						//if dog is found, delete it
@@ -230,7 +268,7 @@ public class DogCompare
 						{
 							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
 						}
-					}
+					}*/
 					break;
 			}//end of switch
 		}//end of while loop
