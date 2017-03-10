@@ -58,8 +58,10 @@ class Dog
 	}
 	
 	//method to compare dogs to each other
-	public int compareTo(Dog dog, Dog searchDog)
+	public int compareTo(Dog dog)
 	{
+		int searchDogSum = (name.compareTo(dog.getName()));
+		
 		//if the dog being sought is not there
 		if (dog == null)
 		{
@@ -112,9 +114,7 @@ public class DogCompare
 		String findName = "";
 		int index = 0;
 		boolean found = false;
-		
-		
-		//Dog dog = new Dog(name, age, weight, numBarks);
+		Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
 		
 		//loops until user enters 5 for quit
 		while (menuOption != 5)
@@ -154,20 +154,25 @@ public class DogCompare
 					
 					index = 0;
 					
-					Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
+					searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
 					for (Dog dog : dogArray)
 					{
 						//if dog is found, output all its data
-						if (searchDog.compareTo(dog, searchDog) == 0)
+						if (searchDog.compareTo(dog) == 0)
 						{
 							System.out.print("\n\n" + dog.getName() + " has been found\nName: " + dog.getName() + "\nAge: " + dog.getAge() + "\nWeight: " + dog.getWeight() + "\nNumber of barks: " + dog.getBarks() + "\n\n");
 							found = true;
 						}
 						
 						//if the dog was never found
-						else if (searchDog.compareTo(dog, searchDog) != 0 && found == false && index == dogArray.length)
+						else if (searchDog.compareTo(dog) != 0 && found == false && index == dogArray.length - 1)
 						{
 							System.out.print("Sorry, " + searchDog.getName() + " has not been found");
+						}
+						
+						else
+						{
+							System.out.print("Blah!");
 						}
 						
 						index++;
@@ -237,17 +242,17 @@ public class DogCompare
 					for (Dog dog : dogArray)
 					{
 						//if dog is found, output all its data
-						if (searchDog2.compareTo(dog, searchDog2) == 0)
+						if (searchDog2.compareTo(dog) == 0)
 						{
 							dogArray[index] = null;	//make that dog object null
-							System.out.print("The dog has been deleted.");
+							System.out.print("\nThe dog has been deleted.");
 							found = true;
 						}
 						
 						//if the dog was never found
-						else if (searchDog2.compareTo(dog, searchDog2) != 0 && found == false && index == dogArray.length)
+						else if (searchDog2.compareTo(dog) != 0 && found == false && index == dogArray.length - 1)
 						{
-							System.out.print("Sorry, " + searchDog2.getName() + " has not been found");
+							System.out.print("\nSorry, " + searchDog2.getName() + " has not been found");
 						}
 						
 						index++;
