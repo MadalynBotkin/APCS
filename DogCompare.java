@@ -60,7 +60,7 @@ class Dog
 	//method to compare dogs to each other
 	public int compareTo(Dog dog)
 	{
-		int searchDogSum = (name.compareTo(dog.getName()));
+		int searchDogSum = (name.compareTo(dog.getName()) + age + weight + numBarks);
 		
 		//if the dog being sought is not there
 		if (dog == null)
