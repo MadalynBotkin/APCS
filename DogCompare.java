@@ -72,6 +72,7 @@ class Dog
 			return -1;
 		}
 		
+		//compare the sum of the dogs' information to each other
 		int searchDogSum = (name.compareTo(dog.getName()) + age + weight);
 		int dogSum = (dog.getName().compareTo(name) + dog.getAge() + dog.getWeight());
 		
@@ -93,7 +94,7 @@ public class DogCompare
 	public static void main(String [] args)
 	{
 		Scanner reader = new Scanner(System.in);
-		Dog[] dogArray = new Dog[2];	//the array of 5 dogs//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		Dog[] dogArray = new Dog[5];	//the array of 5 dogs
 		
 		String name = "";
 		int age = 0;
@@ -102,6 +103,7 @@ public class DogCompare
 		int menuOption = 0;
 		String findName = "";
 		int index = 0;
+		int saveIndex = 0;
 		boolean found = false;
 		Dog searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
 		
@@ -115,7 +117,7 @@ public class DogCompare
 			{
 				case 1:
 					//loops 5 times, once for each dog in the array
-					for (; index < 2; index++)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					for (; index < 5; index++)
 					{
 						System.out.print("\n\nNew dog:\n\nName: ");
 						reader.nextLine();	//clean out reader
@@ -131,6 +133,7 @@ public class DogCompare
 					}
 					break;
 				case 2:
+					//information of the searchDog
 					System.out.print("\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
 					name = reader.nextLine();
@@ -140,81 +143,79 @@ public class DogCompare
 					weight = reader.nextInt();
 					System.out.print("Enter dog's number of barks: ");
 					numBarks = reader.nextInt();
+					found = false;
 					
 					index = 0;
 					
 					searchDog = new Dog(name, age, weight, numBarks);	//create a dog to compare to other dogs
+					
 					for (Dog dog : dogArray)
 					{
-						//if dog is found, output all its data
+						//if dog is found, set found to true
 						if (searchDog.compareTo(dog) == 0)
 						{
-							System.out.print("\n\n" + dog.getName() + " has been found\nName: " + dog.getName() + "\nAge: " + dog.getAge() + "\nWeight: " + dog.getWeight() + "\nNumber of barks: " + dog.getBarks() + "\n\n");
 							found = true;
 						}
-						
-						//if the dog was never found
-						else if (searchDog.compareTo(dog) != 0 && found == false && index == dogArray.length - 1)
+					}
+					
+					if (found == true)
+					{
+						System.out.print("\n\n" + searchDog.getName() + " has been found\nName: " + searchDog.getName() + "\nAge: " + searchDog.getAge() + "\nWeight: " + searchDog.getWeight() + "\nNumber of barks: " + searchDog.getBarks() + "\n\n");
+					}
+					
+					//if the dog was never found
+					else
+					{
+						System.out.print("\nSorry, " + searchDog.getName() + " has not been found.\n");
+					}
+			
+					break;
+				case 3:
+					found = false;
+					index = 0;
+					//find an empty slot in the array
+					//loops until empty space is found or if whole array is found to be full
+					for (Dog dog: dogArray)
+					{
+						//if dog is found, set found to true
+						if (searchDog.compareTo(dog) == -1)
 						{
-							System.out.print("Sorry, " + searchDog.getName() + " has not been found");
+							if (found == false)
+							{
+								found = true;
+								saveIndex = index;	//save the index
+							}
+							found = true;
 						}
-						
-						else
-						{
-							System.out.print("Blah!");
-						}
-						
 						index++;
 					}
 					
-					
-					
-					/*
-					//loops until dog is found or until the whole array has been searched with no result
-					for (index = 0; index < 5 && !findName.equals(name); index++)
+					//if empty space found, enter in a new dog
+					if (found == true)
 					{
-						//if dog is found, output all its data
-						if (findName.equals(dogArray[index].getName()))
-						{
-							System.out.print(dogArray[index].getName() + " has been found\nName: " + dogArray[index].getName() + "\nAge: " + dogArray[index].getAge() + "\nWeight: " + dogArray[index].getWeight() + "\nNumber of barks: " + dogArray[index].getBarks() + "\n\n");
-						}	
+						System.out.print("\n\nNew dog:\n\nName: ");
+						reader.nextLine();	//clean out reader
+						name = reader.nextLine();
+						System.out.print("Age: ");
+						age = reader.nextInt();
+						System.out.print("Weight: ");
+						weight = reader.nextInt();
+						System.out.print("Number of barks: ");
+						numBarks = reader.nextInt();	
+						System.out.print("\n");				
 						
-						//if the dog was never found
-						else if (index == 4 && !findName.equals(dogArray[index].getName()))
-						{
-							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
-						}
-					}*/
-					break;
-				case 3:
-					//find an empty slot in the array
-					//loops until empty space is found or if whole array is found to be full
-					for (index = 0; index < 2 && dogArray[index] != null; index++)//////////////////////////////////////////////////////////////////////////////////////////////////
-					{
-						//if empty space found, enter in a new dog
-						if (dogArray[index] == null)
-						{
-							System.out.print("\n\nNew dog:\n\nName: ");
-							reader.nextLine();	//clean out reader
-							name = reader.nextLine();
-							System.out.print("Age: ");
-							age = reader.nextInt();
-							System.out.print("Weight: ");
-							weight = reader.nextInt();
-							System.out.print("Number of barks: ");
-							numBarks = reader.nextInt();					
-						
-							dogArray[index] = new Dog(name, age, weight, numBarks);	//put a new dog in the array
-						}
-						
-						//if no empty space was found
-						else if (index == 1)///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						{
-							System.out.print("Sorry, but there is no more room for another dog.");
-						}
+						dogArray[saveIndex] = new Dog(name, age, weight, numBarks);	//put a new dog in the array
 					}
+				
+					//if no empty space was found
+					else
+					{
+						System.out.print("\nSorry, but there is no more room for another dog.\n");
+					}
+					
 					break;
 				case 4:
+					//information of the searchDog
 					System.out.print("\nEnter dog's name: ");
 					reader.nextLine();	//clean out reader
 					name = reader.nextLine();
@@ -234,35 +235,19 @@ public class DogCompare
 						if (searchDog2.compareTo(dog) == 0)
 						{
 							dogArray[index] = null;	//make that dog object null
-							System.out.print("\nThe dog has been deleted.");
+							System.out.print("\n" + name + " has been deleted.\n");
 							found = true;
 						}
 						
 						//if the dog was never found
 						else if (searchDog2.compareTo(dog) != 0 && found == false && index == dogArray.length - 1)
 						{
-							System.out.print("\nSorry, " + searchDog2.getName() + " has not been found");
+							System.out.print("\nSorry, " + searchDog2.getName() + " has not been found.\n");
 						}
 						
 						index++;
 					}
-					
-					/*search array for dog
-					for (index = 0; index < 5 && !findName.equals(name); index++)
-					{
-						//if dog is found, delete it
-						if (findName.equals(dogArray[index].getName()))
-						{
-							dogArray[index] = null;	//make that dog object null
-							System.out.print("The dog has been deleted.");
-						}	
-						
-						//if the dog was never found
-						else if (index == 5)
-						{
-							System.out.print("Sorry, " + dogArray[index].getName() + " has not been found");
-						}
-					}*/
+				
 					break;
 			}//end of switch
 		}//end of while loop
