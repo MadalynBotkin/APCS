@@ -2,6 +2,8 @@
 //BeanbagTossGame.java 
 //
 
+import java.util.Scanner;
+
 class Beanbag
 {
 	private int myRow;
@@ -60,9 +62,12 @@ public class BeanbagTossGame
 {
 	public static void main (String [] args)
 	{
+		Scanner reader = new Scanner(System.in);
 		char input = 'i';
 		int r = 0;
 		int c = 0;
+		int score = 0;
+		boolean emptySpot = false;
 		
 		//make the beanbag array
 		Beanbag[][] beanbagArray = new Beanbag[5][5];
@@ -127,26 +132,50 @@ public class BeanbagTossGame
 		
 		
 		
-		//output the array////////////////////////////////////////////////////put in while loop
-		for (r = 0; r < beanbagArray.length; r++)
-		{
-			for (c = 0; c < beanbagArray[0].length; c++)
-			{
-				System.out.print(beanbagArray[r][c].getValue() + "\t");
-			}
-			System.out.print("\n");
-		}
-		
-		
-		
-		
-		
-		
 		
 		//menu
 		while (input != 'q' && input != 'Q')
 		{
-			System.out.print("");
+			/*output the array
+			for (r = 0; r < beanbagArray.length; r++)
+			{
+				for (c = 0; c < beanbagArray[0].length; c++)
+				{
+					System.out.print(beanbagArray[r][c].getValue() + "\t");
+				}
+				System.out.print("\n");
+			}*/
+			
+			System.out.print("\n\nScore: " + score + "\n\nT- Toss a beanbag\nQ- Quit\n\n");
+			input = reader.next().charAt(0);
+			
+			if (input == 't' || input == 'T')
+			{
+				//randomly generate location of tossed beanbag in array
+				r = (int)(Math.random() * 5);
+				c = (int)(Math.random() * 5);
+				
+				
+			}
+			
+			System.out.print("\n\n" + r);
+			
+			//check if the array is already full
+			for (Beanbag[] bag : beanbagArray)
+			{
+				if (bag.isActivated() == true)////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				{
+					emptySpot = true;
+				}
+			}
+			
+			if (emptySpot != true)
+			{
+				input = 'q';
+			}
 		}
+		
+		System.out.print("\n\nFinal score: " + score + "\nThanks for playing!");
+		
 	}//end of main
 }
