@@ -149,11 +149,23 @@ public class BeanbagTossGame
 			System.out.print("\n\nScore: " + score + "\n\nT- Toss a beanbag\nQ- Quit\n\n");
 			input = reader.next().charAt(0);
 			
+			//toss a beanbag
 			if (input == 't' || input == 'T')
 			{
-				//randomly generate location of tossed beanbag in array
-				r = (int)(Math.random() * 5);
-				c = (int)(Math.random() * 5);
+				
+				////////////////////////////////////////////////////////////////////////////emptySpot
+				while ()
+				{
+					//randomly generate location of tossed beanbag in array
+					r = (int)(Math.random() * 5);
+					c = (int)(Math.random() * 5);
+					
+					if (beanbagArray[r][c].isActivated() == false)
+					{
+						//activate it
+					}
+				}
+				
 				
 				
 			}
@@ -161,11 +173,14 @@ public class BeanbagTossGame
 			System.out.print("\n\n" + r);
 			
 			//check if the array is already full
-			for (Beanbag[] bag : beanbagArray)
+			for (Beanbag[] bagArray : beanbagArray)
 			{
-				if (bag.isActivated() == true)////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				for (Beanbag bag : bagArray)	//go through each array in the array
 				{
-					emptySpot = true;
+					if (bag.isActivated() == true)
+					{
+						emptySpot = true;
+					}
 				}
 			}
 			
