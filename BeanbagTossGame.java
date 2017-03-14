@@ -67,7 +67,7 @@ public class BeanbagTossGame
 		int r = 0;
 		int c = 0;
 		int score = 0;
-		boolean emptySpot = false;
+		boolean emptySpot = true;
 		
 		//make the beanbag array
 		Beanbag[][] beanbagArray = new Beanbag[5][5];
@@ -152,9 +152,9 @@ public class BeanbagTossGame
 			//toss a beanbag
 			if (input == 't' || input == 'T')
 			{
+				emptySpot = true;
 				
-				////////////////////////////////////////////////////////////////////////////emptySpot
-				while ()
+				while (emptySpot == true)
 				{
 					//randomly generate location of tossed beanbag in array
 					r = (int)(Math.random() * 5);
@@ -162,15 +162,15 @@ public class BeanbagTossGame
 					
 					if (beanbagArray[r][c].isActivated() == false)
 					{
-						//activate it
+						emptySpot = false;
+						beanbagArray[r][c].hitBeanbag();
 					}
 				}
-				
-				
-				
 			}
 			
 			System.out.print("\n\n" + r);
+			
+			emptySpot = false;
 			
 			//check if the array is already full
 			for (Beanbag[] bagArray : beanbagArray)
