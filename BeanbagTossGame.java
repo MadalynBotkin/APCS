@@ -1,6 +1,6 @@
 //Madalyn Botkin
 //BeanbagTossGame.java 
-//
+//There is an 2D array of beanbags. Each beanbag has a value. When the user chooses to throw a beanbag, a position in the array is randomly generated, and whatever value is has gets added to the user's score.
 
 import java.util.Scanner;
 
@@ -148,7 +148,7 @@ public class BeanbagTossGame
 					
 					else
 					{
-						System.out.print(beanbagArray[r][c].getValue() + "\t");	
+						System.out.print(beanbagArray[r][c].getValue() + "\t");	//output the value
 					}
 				}
 				System.out.print("\n");
@@ -192,13 +192,13 @@ public class BeanbagTossGame
 				}
 			}
 			
-			if (emptySpot != true)
+			if (emptySpot != true)	//if there are no empty slots left, quit the game
 			{
 				input = 'q';
 			}
 		}
 		
-		System.out.print("\n\nFinal score: " + score + "\nThanks for playing!");
+		System.out.print("\n\nFinal score: " + score + "\nThanks for playing!\n\n");
 		
 	}//end of main
 }
