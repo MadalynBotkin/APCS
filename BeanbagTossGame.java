@@ -136,17 +136,25 @@ public class BeanbagTossGame
 		//menu
 		while (input != 'q' && input != 'Q')
 		{
-			/*output the array
+			//output the array
 			for (r = 0; r < beanbagArray.length; r++)
 			{
 				for (c = 0; c < beanbagArray[0].length; c++)
 				{
-					System.out.print(beanbagArray[r][c].getValue() + "\t");
+					if (beanbagArray[r][c].isActivated() == true)	//if the beanbag is activated, output a B
+					{
+						System.out.print('B' + "\t");
+					}
+					
+					else
+					{
+						System.out.print(beanbagArray[r][c].getValue() + "\t");	
+					}
 				}
 				System.out.print("\n");
-			}*/
+			}
 			
-			System.out.print("\n\nScore: " + score + "\n\nT- Toss a beanbag\nQ- Quit\n\n");
+			System.out.print("\n\nT- Toss a beanbag\nQ- Quit\n\n");
 			input = reader.next().charAt(0);
 			
 			//toss a beanbag
@@ -162,13 +170,13 @@ public class BeanbagTossGame
 					
 					if (beanbagArray[r][c].isActivated() == false)
 					{
+						score += beanbagArray[r][c].getValue();	//increase score
 						emptySpot = false;
-						beanbagArray[r][c].hitBeanbag();
+						beanbagArray[r][c].hitBeanbag();	//activate the beanbag
+						System.out.print("\nYou hit a " + beanbagArray[r][c].getValue() + "!" + "\nScore: " + score + "\n\n");
 					}
 				}
 			}
-			
-			System.out.print("\n\n" + r);
 			
 			emptySpot = false;
 			
