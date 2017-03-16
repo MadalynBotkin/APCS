@@ -1,6 +1,7 @@
 //Madalyn Botkin
 //BeanbagTossGame.java 
-//There is an 2D array of beanbags. Each beanbag has a value. When the user chooses to throw a beanbag, a position in the array is randomly generated, and whatever value is has gets added to the user's score.
+//There is an 2D array of beanbags. Each beanbag has a value. When the user chooses to throw a beanbag, a position in the array is randomly generated,
+//	and whatever value is has gets added to the user's score.
 
 import java.util.Scanner;
 
@@ -185,7 +186,7 @@ public class BeanbagTossGame
 			{
 				for (Beanbag bag : bagArray)	//go through each array in the array
 				{
-					if (bag.isActivated() == true)
+					if (bag.isActivated() == false)
 					{
 						emptySpot = true;
 					}
