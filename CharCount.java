@@ -52,7 +52,7 @@ class charCount
 				{
 					if (listIndex == -1 && duplicate == false)	//if a place nor duplicate are found yet
 					{
-						if ( < )	//found a place///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+						if ( charObj < charList.get(i))	//found a place///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						{
 							listIndex = i;	//keep track of the index of where to place intObj
 						}
@@ -75,6 +75,7 @@ class charCount
 					{
 						list.add(placeIndex, intObj);
 					}
+				}
 
 				
 				
