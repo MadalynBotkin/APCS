@@ -15,7 +15,6 @@ class IntListInsert
 		int num = 0;
 		int placeIndex = -1;
 		Integer intObj;
-		boolean inserted = false;
 		boolean duplicate;
 		
 		//find out how many integers the user wants to enter
@@ -36,8 +35,6 @@ class IntListInsert
 			num = reader.nextInt();
 			
 			intObj = new Integer(num);	//turn the int into an Integer wrapper object
-			
-			inserted = false;
 			
 			if (list.size() == 0)	//if the list is empty in the beginning
 			{
