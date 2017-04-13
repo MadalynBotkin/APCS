@@ -1,0 +1,62 @@
+//Madalyn Botkin
+//PlusMinus.java
+//
+
+import java.util.*;
+
+public class PlusMinus
+{
+	static int i = 0;
+	
+	public static void main(String [] args)
+	{
+		Scanner reader = new Scanner(System.in);
+		
+		
+		System.out.print("Number of iterations: ");
+		i = reader.nextInt();
+		
+		bigFirst(i);
+		smallFirst(i);
+	}
+	
+	public static void bigFirst(int i)
+	{
+		if (i >= 1)
+		{
+			for (int k = i; k > 0; k--)	//output minuses
+			{
+				System.out.print("-");
+			}
+			
+			for (int k = i; k > 0; k--)	//output pluses
+			{
+				System.out.print("+");
+			}
+			
+			System.out.print("\n");
+			
+			bigFirst(i - 1);
+		}
+	}
+		
+	public static void smallFirst(int i)
+	{
+		if (i >= 1)
+		{
+			bigFirst(i - 1);
+			
+			for (int k = i; k > 0; k--)	//output minuses
+			{
+				System.out.print("-");
+			}
+			
+			for (int k = i; k > 0; k--)	//output pluses
+			{
+				System.out.print("+");
+			}
+			
+			System.out.print("\n");
+		}	
+	}
+}
