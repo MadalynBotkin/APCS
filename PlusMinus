@@ -1,6 +1,7 @@
 //Madalyn Botkin
 //PlusMinus.java
-//
+//The user enters the number of iterations to be sent to two recursive methods that will output minuses and pluses. The first will output the -s and +s for the
+//	maximum amount of iterations first, then decreases. The second does the opposite.
 
 import java.util.*;
 
@@ -13,10 +14,11 @@ public class PlusMinus
 		Scanner reader = new Scanner(System.in);
 		
 		
-		System.out.print("Number of iterations: ");
+		System.out.print("Number of iterations: ");	//the maximum amount of +s and -s
 		i = reader.nextInt();
 		
 		bigFirst(i);
+		System.out.print("\n");
 		smallFirst(i);
 	}
 	
@@ -44,7 +46,7 @@ public class PlusMinus
 	{
 		if (i >= 1)
 		{
-			bigFirst(i - 1);
+			smallFirst(i - 1);
 			
 			for (int k = i; k > 0; k--)	//output minuses
 			{
