@@ -1,6 +1,6 @@
 //Madalyn Botkin
 //EvenSum.java
-//User enters an even integer which is sent to a recursive method that finds the sum of all the even integers less than the specified even integer
+//User enters an even integer which is sent to a recursive method that finds the sum of all the even integers less than the specified even integer.
 
 import java.util.*;
 
@@ -21,7 +21,7 @@ public class EvenSum
 			evenInt = reader.nextInt();
 		}
 		
-		System.out.print("\nSum of all numbers less than " + evenInt + ": " + sumNums(evenInt));
+		System.out.print("\nSum of all even numbers less than " + evenInt + ": " + sumNums(evenInt));
 	}
 	
 	public static int sumNums(int currentNum)
