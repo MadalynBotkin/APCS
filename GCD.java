@@ -2,10 +2,13 @@
 //GCD.java
 //
 
-public class GDC
+
+class GDC
 {
 	public static void main(System [] args)
 	{
+		
+		
 		//send remainder
 	}
 }
