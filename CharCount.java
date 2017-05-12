@@ -24,6 +24,7 @@ class charCount
 		
 		
 		for (; index < text.length(); index++)	//traverse string
+
 		{
 			int numCharListIndex;			
 			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
@@ -65,8 +66,8 @@ class charCount
 		{
 			System.out.print(charList.get(i) + \t + numCharList.get(i));
 		}
-		
-		
+	}
+}
 		
 		
 		
