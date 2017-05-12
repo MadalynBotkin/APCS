@@ -61,18 +61,11 @@ h
 			}
 		}
 		
-		//output the list of characters
-		System.out.print("Character\n________________\n");
-		for (Character character : charList)
+		//output the lists of characters and frequencies
+		System.out.print("Character:\tFrequency:\n__________\t__________");
+		for (int index = 0; index < charList.size(); index++)
 		{
-			System.out.print(character + "\n");
-		}
-		
-		//output the list of frequencies
-		System.out.print("Frequency\n________________\n");
-		for (Integer count : numCharList)
-		{
-			System.out.print(count + "\n");
+			System.out.print(charList.get(index) + \t + numCharList.get(index));
 		}
 		
 		
