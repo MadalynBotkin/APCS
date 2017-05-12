@@ -13,7 +13,6 @@ class charCount
 		ArrayList<Character> charList = new ArrayList<Character>();	//the characters in a string
 		ArrayList<Integer> numCharList = new ArrayList<Integer>();	//the number of times each character occurs
 		String text;
-		Character charObj;
 a		int index = 0;	//index of where you are in the string
 		int listIndex = -1;	//index of where you are in the ArrayLists
 		int numCharCount = 0;
@@ -26,7 +25,7 @@ a		int index = 0;	//index of where you are in the string
 h		
 		
 		
-		for (; index < text.length(); index++)	//traverse string
+/		for (; index < text.length(); index++)	//traverse string
 		{
 			int numCharListIndex;			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
 			
@@ -63,9 +62,9 @@ h
 		
 		//output the lists of characters and frequencies
 		System.out.print("Character:\tFrequency:\n__________\t__________");
-		for (int index = 0; index < charList.size(); index++)
+		for (int i = 0; i < charList.size(); i++)
 		{
-			System.out.print(charList.get(index) + \t + numCharList.get(index));
+			System.out.print(charList.get(i) + \t + numCharList.get(i));
 		}
 		
 		
@@ -73,7 +72,7 @@ h
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		for (; index < text.length(); index++)	//traverse string
+		/*for (; index < text.length(); index++)	//traverse string
 		{
 			//compareASCII = (int) text.charAt(index);
 			charObj = new Character(text.charAt(index));	//convert char to Character wrapper object
@@ -136,7 +135,7 @@ h
 
 
 
-/*I went to the grocery store and bought so many turkeys I couldn't fit them all in the cart. Not to mention I bought two thousand cans of gravy to go along with the meal.
+I went to the grocery store and bought so many turkeys I couldn't fit them all in the cart. Not to mention I bought two thousand cans of gravy to go along with the meal.
  *i = where you are in both arrayLists
  *index = the index of where you are in the string
  *
