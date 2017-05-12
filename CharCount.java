@@ -19,14 +19,13 @@ class charCount
 		text = reader.nextLine();
 		
 		text = text.toUpperCase();	//convert all characters to uppercase letters
-		System.out.print(text);
 		
 		
 		
 		for (; index < text.length(); index++)	//traverse string
 
 		{
-			int numCharListIndex;			
+			int numCharListIndex = 0;			
 			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
 			
 			for (Character character : charList)	//compare the char to the chars in the array list
@@ -48,6 +47,7 @@ class charCount
 			//if it hasn't been added yet, add it
 			else
 			{
+				boolean added = false;
 				//find place to put the character in the arrayList
 				for (Character character : charList)
 				{
@@ -55,98 +55,23 @@ class charCount
 					{
 						charList.add(charList.indexOf(character), addChar);
 						numCharList.set(numCharListIndex, numCharList.get(numCharListIndex) + 1);
+						added = true;
 					}
+				}
+				
+				if (added == false)
+				{
+					charList.add(addChar);
+					numCharList.set(numCharListIndex, numCharList.get(numCharListIndex) + 1);
 				}
 			}
 		}
 		
 		//output the lists of characters and frequencies
-		System.out.print("Character:\tFrequency:\n__________\t__________");
+		System.out.print("Character:\tFrequency:\n");
 		for (int i = 0; i < charList.size(); i++)
 		{
-			System.out.print(charList.get(i) + \t + numCharList.get(i));
+			System.out.print(charList.get(i) + "\t" + numCharList.get(i));
 		}
 	}
 }
-		
-		
-		//GCD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/*for (; index < text.length(); index++)	//traverse string
-		{
-			//compareASCII = (int) text.charAt(index);
-			charObj = new Character(text.charAt(index));	//convert char to Character wrapper object
-			numCharCount = 0;
-			
-			if (charList.size() == 0 && numCharList.size() == 0)	//if the lists are empty in the beginning
-			{
-				charList.add(text.charAt(index));
-				numCharList.add(listIndex, 1);
-			}
-			
-			else	//if not empty
-			{
-				listIndex = -1;
-				duplicate = false;
-				
-				//find a place to put the char
-				for (int i = 0; i < charList.size(); i++)
-				{
-					if (listIndex == -1 && duplicate == false)	//if a place nor duplicate are found yet
-					{
-						if (charObj < charList.get(i))	//found a place
-						{
-							listIndex = i;	//keep track of the index of where to place charObj
-						}
-						
-						if (charObj == charList.get(i))	//flag if it's a duplicate
-						{
-							duplicate = true;
-							numCharList.add(numCharList.get(i) + 1);////////////////////////////////need another
-						}
-					}
-				}
-					
-				if (duplicate == false)	//don't add duplicates
-				{
-					if (listIndex == -1)	//if it's the greatest char yet, put it at the end
-					{
-						charList.add(charObj);
-					}
-				
-					else	//a specific place was found to put it
-					{
-						charList.add(listIndex, charObj);
-					}
-				}	
-			}//end of else
-			
-			for (Character k : charList)
-			{
-				System.out.print(k);
-			}
-			
-		}//end of for loop
-	}
-}
-
-
-
-
-
-
-I went to the grocery store and bought so many turkeys I couldn't fit them all in the cart. Not to mention I bought two thousand cans of gravy to go along with the meal.
- *i = where you are in both arrayLists
- *index = the index of where you are in the string
- *
- *get character
- *get ascii value
- *compare value to others
- *sort like IntListInsert
- *
- *
- *
- *
- *
- *
- */
