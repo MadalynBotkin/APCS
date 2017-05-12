@@ -1,43 +1,42 @@
 //Madalyn Botkin
 //CharCount.java
-//
+//The user enters a sentence or paragraph. Each unique character in the text is stored in an arrayList. In a parallel arrayList, a count
+//	of how many times each character occurs in text is stored. Then, both arrays are displayed.
 
 import java.util.*;
-
+r
 class charCount
 {
 	public static void main(String [] args)
-	{
+/	{
 		Scanner reader = new Scanner(System.in);
 		ArrayList<Character> charList = new ArrayList<Character>();	//the characters in a string
 		ArrayList<Integer> numCharList = new ArrayList<Integer>();	//the number of times each character occurs
 		String text;
 		Character charObj;
-		int index = 0;	//index of where you are in the string
+a		int index = 0;	//index of where you are in the string
 		int listIndex = -1;	//index of where you are in the ArrayLists
 		int numCharCount = 0;
 		boolean duplicate = false;
-	
-		System.out.print("Enter a sentence or even a paragraph: ");
+/			System.out.print("Enter a sentence or even a paragraph: ");
 		text = reader.nextLine();
 		
 		text = text.toUpperCase();	//convert all characters to uppercase letters
 		System.out.print(text);
-		
+h		
 		
 		
 		for (; index < text.length(); index++)	//traverse string
 		{
-			int numCharListIndex;
-			Character addChar  = new Character(text.charAt(index));
+			int numCharListIndex;			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
 			
 			for (Character character : charList)	//compare the char to the chars in the array list
 			{
 				//find out if that character is already in the char arrayList
 				if (addChar == character)
 				{
-					duplicate = true;
-					numCharListIndex = charList.indexOf(character);
+					duplicate = true;	//flag it if it's a duplicate
+					numCharListIndex = charList.indexOf(character);	//save the index of the duplicate to use later
 				}
 			}
 			
@@ -50,19 +49,31 @@ class charCount
 			//if it hasn't been added yet, add it
 			else
 			{
-				//find place in arrayList!
+				//find place to put the character in the arrayList
 				for (Character character : charList)
 				{
-					if (addChar < character)
+					if (addChar.compareTo(character) < 0)
 					{
 						charList.add(charList.indexOf(character), addChar);
+						numCharList.set(numCharListIndex, numCharList.get(numCharListIndex) + 1);
 					}
 				}
 			}
 		}
 		
+		//output the list of characters
+		System.out.print("Character\n________________\n");
+		for (Character character : charList)
+		{
+			System.out.print(character + "\n");
+		}
 		
-		
+		//output the list of frequencies
+		System.out.print("Frequency\n________________\n");
+		for (Integer count : numCharList)
+		{
+			System.out.print(count + "\n");
+		}
 		
 		
 		
