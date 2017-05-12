@@ -15,8 +15,6 @@ class charCount
 		Character charObj;
 		int index = 0;	//index of where you are in the string
 		int listIndex = -1;	//index of where you are in the ArrayLists
-		//int listASCII;	//the ASCII value of a character in the ArrayList
-		//int compareASCII;	//the ASCII value of the character that's being compared to elements in the ArrayList
 		int numCharCount = 0;
 		boolean duplicate = false;
 	
@@ -28,11 +26,49 @@ class charCount
 		
 		
 		
+		for (; index < text.length(); index++)	//traverse string
+		{
+			int numCharListIndex;
+			Character addChar  = new Character(text.charAt(index));
+			
+			for (Character character : charList)	//compare the char to the chars in the array list
+			{
+				//find out if that character is already in the char arrayList
+				if (addChar == character)
+				{
+					duplicate = true;
+					numCharListIndex = charList.indexOf(character);
+				}
+			}
+			
+			//if that character is already on the list, just add to the count of that character in the other list
+			if (duplicate == true)
+			{
+				numCharList.set(numCharListIndex, numCharList.get(numCharListIndex) + 1);
+			}
+			
+			//if it hasn't been added yet, add it
+			else
+			{
+				//find place in arrayList!
+				for (Character character : charList)
+				{
+					if (addChar < character)
+					{
+						charList.add(charList.indexOf(character), addChar);
+					}
+				}
+			}
+		}
 		
 		
 		
 		
 		
+		
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		for (; index < text.length(); index++)	//traverse string
 		{
 			//compareASCII = (int) text.charAt(index);
