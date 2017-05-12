@@ -4,30 +4,29 @@
 //	of how many times each character occurs in text is stored. Then, both arrays are displayed.
 
 import java.util.*;
-r
+
 class charCount
 {
 	public static void main(String [] args)
-/	{
+	{
 		Scanner reader = new Scanner(System.in);
 		ArrayList<Character> charList = new ArrayList<Character>();	//the characters in a string
 		ArrayList<Integer> numCharList = new ArrayList<Integer>();	//the number of times each character occurs
 		String text;
-a		int index = 0;	//index of where you are in the string
-		int listIndex = -1;	//index of where you are in the ArrayLists
-		int numCharCount = 0;
+		int index = 0;	//index of where you are in the string
 		boolean duplicate = false;
-/			System.out.print("Enter a sentence or even a paragraph: ");
+		System.out.print("Enter a sentence or even a paragraph: ");
 		text = reader.nextLine();
 		
 		text = text.toUpperCase();	//convert all characters to uppercase letters
 		System.out.print(text);
-h		
 		
 		
-/		for (; index < text.length(); index++)	//traverse string
+		
+		for (; index < text.length(); index++)	//traverse string
 		{
-			int numCharListIndex;			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
+			int numCharListIndex;			
+			Character addChar  = new Character(text.charAt(index));	//wrap the char into a Character
 			
 			for (Character character : charList)	//compare the char to the chars in the array list
 			{
