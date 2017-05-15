@@ -46,3 +46,17 @@ public class ClickMe extends Applet implements MouseListener
 	public void mouseEntered(MouseEvent event) {}
 	public void mouseExited(MouseEvent event) {}
 } // end ClickMe class
+
+
+
+/*
+To create a new applet in JCreator:
+File -> New -> File -> Other folder -> HTML Applet.  Name the applet ClickMe.html
+Change the line code
+
+= ".class"   to      code
+
+= "ClickMe.class"
+
+Be sure to compile both the ClickMe.java and Spot.java files so object files are created.
+Compile and run the ClickMe.html file.*/
